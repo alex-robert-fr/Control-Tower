@@ -2,7 +2,7 @@ function Array() {
 	return (
 		<section className="mx-6 my-3 border-2 border-gray-150 rounded-xl">
 				<table className="table-fixed w-full">
-					<thead className="border-b text-sm text-gray-600">
+					<thead className="border-b text-sm text-gray-500">
 						<tr>
 							<th className="p-2 rounded-tl-xl bg-gray-100 w-36">
 								Date de création
