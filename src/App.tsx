@@ -1,14 +1,15 @@
 import './App.css';
 import Section from './components/Section.tsx';
 import LineForm from './components/LineForm.tsx';
+import Array from './components/Array.tsx';
 
 function App() {
   return (
-    <main className="shadow-xl rounded-lg">
-			<h1 className="text-2xl uppercase font-bold text-left ml-6">
+    <main className="shadow-custom rounded-lg pb-1">
+			<h1 className="text-2xl uppercase font-bold text-left ml-6 pt-6">
 				Extension des capacités logistiques (com_rdi_001)
 			</h1>
-			<section className="m-6 grid grid-cols-2 gap-4">
+			<section className="m-6 mb-0 grid grid-cols-2 gap-4">
 				<Section className="row-span-2" title="Informations">
 					<div>
 						<LineForm name="Manager">
@@ -37,6 +38,7 @@ function App() {
 				</Section>
 				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2">Nouvelle évaluation</button>
 			</section>
+			<Array/>
     </main>
   )
 }
