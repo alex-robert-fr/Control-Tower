@@ -29,8 +29,8 @@ function App() {
 					</div>
 				</Section>
 				<Section title="Description du projet">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu.</p>
-					<button>Voir plus</button>
+					<p className="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu.</p>
+					<button className="mt-5 font-bold text-blue-600">Voir plus</button>
 				</Section>
 				<Section title="Domaine et programme">
 				</Section>
