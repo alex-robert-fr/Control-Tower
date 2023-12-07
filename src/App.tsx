@@ -33,7 +33,9 @@ function App() {
 					<button className="mt-5 font-bold text-blue-600">Voir plus</button>
 				</Section>
 				<Section title="Domaine et programme">
+					
 				</Section>
+				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2">Nouvelle évaluation</button>
 			</section>
     </main>
   )
