@@ -5,15 +5,17 @@ import LineForm from './components/LineForm.tsx';
 function App() {
   return (
     <main className="shadow-xl rounded-lg">
-			<h1 className="text-2xl uppercase font-bold">
+			<h1 className="text-2xl uppercase font-bold text-left ml-6">
 				Extension des capacités logistiques (com_rdi_001)
 			</h1>
-			<section className="m-6 grid grid-cols-2">
+			<section className="m-6 grid grid-cols-2 gap-4">
 				<Section className="row-span-2" title="Informations">
 					<div>
 						<LineForm name="Manager">
-							<button>JDO</button>
-							<button>John Doe</button>
+							<div>
+								<button>JDO</button>
+								<button>John Doe</button>
+							</div>
 						</LineForm>
 						<LineForm name="Statut">
 							<p>En cours</p>
