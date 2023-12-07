@@ -25,10 +25,30 @@ function App() {
 							</div>
 						</LineForm>
 						<LineForm name="Statut">
-							<p>En cours</p>
+							<select name="status">
+								<option value="en cadrage">
+									En cadrage
+								</option>
+								<option value="en cours">
+									En cours
+								</option>
+								<option value="terminé">
+									Terminé
+								</option>
+							</select>
 						</LineForm>
 						<LineForm name="Modèle de risque">
-							<p>Modèle 1</p>
+							<select name="model">
+								<option value="model 1">
+									Modèle 1
+								</option>
+								<option value="model 2">
+									Modèle 2
+								</option>
+								<option value="model 3">
+									Modèle 3
+								</option>
+							</select>
 						</LineForm>
 						<LineForm name="Dates">
 							<p>4 septembre 2023 -> 18 décembre 2023</p>
