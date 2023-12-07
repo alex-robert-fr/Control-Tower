@@ -11,11 +11,17 @@ function App() {
 			</h1>
 			<section className="m-6 mb-0 grid grid-cols-2 gap-4">
 				<Section className="row-span-2" title="Informations">
-					<div>
+					<div className="flex flex-col">
 						<LineForm name="Manager">
-							<div>
-								<button>JDO</button>
-								<button>John Doe</button>
+							<div className="flex gap-x-5">
+								<div>
+									<input className="hidden" type="radio" id="jdo" name="manager" value="jdo" checked />
+									<label for="jdo" className="border border-gray-300 p-2 rounded-full">JDO</label>
+								</div>
+								<div>
+									<input className="hidden" type="radio" id="john doe" name="manager" value="john doe" />
+									<label for="john doe">John Doe</label>
+								</div>
 							</div>
 						</LineForm>
 						<LineForm name="Statut">
@@ -61,6 +67,9 @@ function App() {
 						</tbody>
 					</table>
 				</Section>
+				<p className="justify-self-start self-center text-emerald-500 font-bold text-lg">
+					Évaluations validées ✓
+				</p>
 				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2">Nouvelle évaluation</button>
 			</section>
 			<Array/>
