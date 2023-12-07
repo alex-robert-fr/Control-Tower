@@ -51,7 +51,9 @@ function App() {
 							</select>
 						</LineForm>
 						<LineForm name="Dates">
-							<p>4 septembre 2023 -> 18 décembre 2023</p>
+							<input type="date" name="start-date" value="2023-12-07" />
+							<p>➔</p>
+							<input type="date" name="end-date" value="2023-12-08" />
 						</LineForm>
 					</div>
 				</Section>
