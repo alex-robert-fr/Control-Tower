@@ -5,11 +5,7 @@
 				"name": "Extension des capacités logistiques",
 				"reference": "com_rdi_001",
 				"status": "IN_PROGRESS",
-				"status_enum": {
-					"IN_PROGRESS": "in progress",
-					"SCOPING": "scoping",
-					"COMPLETED": "completed"
-				},
+				
 				"manager_id": 1,
 				"risk_model_id": 1,
 				"start_date": "2023-12-08",

@@ -1,18 +1,22 @@
 import LineForm from "./LineForm";
 
+enum StatusEnum {
+	IN_PROGRESS = "in progress",
+	SCOPING = "scoping",
+	COMPLETED = "completed"
+}
+
 function FormStatus() {
 	return (
 		<LineForm name="Statut">
 			<select name="status">
-				<option value="en cadrage">
-					En cadrage
-				</option>
-				<option value="en cours">
-					En cours
-				</option>
-				<option value="terminé">
-					Terminé
-				</option>
+				{Object.values(StatusEnum).map((status: string) => {
+					return (
+						<option value={status}>
+							{status}
+						</option>
+					);
+				})}
 			</select>
 		</LineForm>);
 }
