@@ -16,11 +16,11 @@ function App() {
 							<div className="flex gap-x-5">
 								<div>
 									<input className="hidden" type="radio" id="jdo" name="manager" value="jdo" checked />
-									<label for="jdo" className="border border-gray-300 p-2 rounded-full">JDO</label>
+									<label htmlFor="jdo" className="border border-gray-300 p-2 rounded-full">JDO</label>
 								</div>
 								<div>
 									<input className="hidden" type="radio" id="john doe" name="manager" value="john doe" />
-									<label for="john doe">John Doe</label>
+									<label htmlFor="john doe">John Doe</label>
 								</div>
 							</div>
 						</LineForm>

@@ -1,0 +1,22 @@
+{
+		"project": [
+			{
+				"id": 2,
+				"name": "Extension des capacités logistiques",
+				"reference": "com_rdi_001",
+				"status": "IN_PROGRESS",
+				"status_enum": {
+					"IN_PROGRESS": "in progress",
+					"SCOPING": "scoping",
+					"COMPLETED": "completed"
+				},
+				"manager_id": 1,
+				"risk_model_id": 1,
+				"start_date": "2023-12-08",
+				"end_date": "2023-12-08",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu.",
+				"domain": 1,
+				"program": 1
+			}
+		]
+}
