@@ -3,6 +3,7 @@ import Section from './components/Section.tsx';
 import LineForm from './components/form/LineForm.tsx';
 import Array from './components/Array.tsx';
 import FormManager from './components/form/FormManager.tsx';
+import FormStatus from './components/form/FormStatus.tsx';
 
 function App() {
   return (
@@ -14,19 +15,7 @@ function App() {
 				<Section className="row-span-2" title="Informations">
 					<div className="flex flex-col">
 						<FormManager />
-						<LineForm name="Statut">
-							<select name="status">
-								<option value="en cadrage">
-									En cadrage
-								</option>
-								<option value="en cours">
-									En cours
-								</option>
-								<option value="terminé">
-									Terminé
-								</option>
-							</select>
-						</LineForm>
+						<FormStatus />
 						<LineForm name="Modèle de risque">
 							<select name="model">
 								<option value="model 1">
