@@ -18,5 +18,17 @@
 				"domain": 1,
 				"program": 1
 			}
+		],
+		"manager": [
+			{
+				"id": 0,
+				"name": "Jean",
+				"lastname": "Dupont"
+			},
+			{
+				"id": 0,
+				"name": "John",
+				"lastname": "Doe"
+			}
 		]
 }

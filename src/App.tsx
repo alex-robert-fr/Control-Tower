@@ -1,7 +1,8 @@
 import './App.css';
 import Section from './components/Section.tsx';
-import LineForm from './components/LineForm.tsx';
+import LineForm from './components/form/LineForm.tsx';
 import Array from './components/Array.tsx';
+import FormManager from './components/form/FormManager.tsx';
 
 function App() {
   return (
@@ -12,18 +13,7 @@ function App() {
 			<section className="m-6 mb-0 grid grid-cols-2 gap-4">
 				<Section className="row-span-2" title="Informations">
 					<div className="flex flex-col">
-						<LineForm name="Manager">
-							<div className="flex gap-x-5">
-								<div>
-									<input className="hidden" type="radio" id="jdo" name="manager" value="jdo" checked />
-									<label htmlFor="jdo" className="border border-gray-300 p-2 rounded-full">JDO</label>
-								</div>
-								<div>
-									<input className="hidden" type="radio" id="john doe" name="manager" value="john doe" />
-									<label htmlFor="john doe">John Doe</label>
-								</div>
-							</div>
-						</LineForm>
+						<FormManager />
 						<LineForm name="Statut">
 							<select name="status">
 								<option value="en cadrage">
@@ -51,9 +41,9 @@ function App() {
 							</select>
 						</LineForm>
 						<LineForm name="Dates">
-							<input type="date" name="start-date" value="2023-12-07" />
+							<input type="date" name="start-date" defaultValue="2023-12-07" />
 							<p>➔</p>
-							<input type="date" name="end-date" value="2023-12-08" />
+							<input type="date" name="end-date" defaultValue="2023-12-08" />
 						</LineForm>
 					</div>
 				</Section>
