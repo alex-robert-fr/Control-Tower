@@ -7,7 +7,14 @@ interface ArrayProps {
 function Array({evaluations}: ArrayProps) {
 
 	return (
-		<section className="mx-6 my-3 border-2 border-gray-150 rounded-xl">
+		<>
+			<section className="grid grid-cols-2 mx-6" >
+				<p className="justify-self-start self-center text-emerald-500 font-bold text-lg">
+					Évaluations validées ✓
+				</p>
+				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700">Nouvelle évaluation</button>
+			</section>
+			<section className="mx-6 my-3 border-2 border-gray-150 rounded-xl">
 				<table className="table-fixed w-full">
 					<thead className="border-b text-sm text-gray-500">
 						<tr>
@@ -53,6 +60,7 @@ function Array({evaluations}: ArrayProps) {
 					</tbody>
 				</table>
 			</section>
+		</>
 	)
 }
 

@@ -48,7 +48,7 @@ function Info({data}: InfoProps) {
 			<h1 className="text-2xl uppercase font-bold text-left ml-6 pt-6">
 				{data?.name} ({data?.reference})
 			</h1>
-			<section className="m-6 mb-0 grid grid-cols-2 gap-4">
+			<section className="m-6 grid grid-cols-2 gap-4">
 				<Section className="row-span-2" title="Informations">
 					<div className="flex flex-col">
 						<FormManager manager_id={data?.manager_id} />
@@ -59,10 +59,6 @@ function Info({data}: InfoProps) {
 				</Section>
 				<Description description={data?.description} />
 				<DomainAndProgram />
-				<p className="justify-self-start self-center text-emerald-500 font-bold text-lg">
-					Évaluations validées ✓
-				</p>
-				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2">Nouvelle évaluation</button>
 			</section>
 		</>
 	);
