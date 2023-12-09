@@ -14,7 +14,7 @@ function Array({evaluations}: ArrayProps) {
 				</p>
 				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700">Nouvelle évaluation</button>
 			</section>
-			<section className="mx-6 my-3 border-2 border-gray-150 rounded-xl">
+			<section className="mx-6 my-2 border-2 border-gray-150 rounded-xl">
 				<table className="table-fixed w-full">
 					<thead className="border-b text-sm text-gray-500">
 						<tr>
@@ -36,7 +36,7 @@ function Array({evaluations}: ArrayProps) {
 							const creation_date = new Date(evaluation.creation_date);
 							const validation_date = new Date(evaluation.validation_date);
 							return (
-								<tr key={index} className="border-b-2 border-gray-150">
+								<tr key={index} className={index < evaluations.length - 1 ? "border-b-2 border-gray-150" : ""}>
 									<td className="p-2">
 										{creation_date.toLocaleString('fr-FR', {
 											day: '2-digit',
