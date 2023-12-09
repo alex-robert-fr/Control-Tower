@@ -37,6 +37,7 @@ function Info() {
 	};
 	const {data, isLoading, error} = useQuery<Project, Error>("project", fetchProject);
 	console.log(data);
+	console.log(data?.status);
 	
 	return (
 		<>
@@ -47,7 +48,7 @@ function Info() {
 				<Section className="row-span-2" title="Informations">
 					<div className="flex flex-col">
 						<FormManager manager_id={data?.manager_id} />
-						<FormStatus />
+						<FormStatus status={data?.status} />
 						<FormModel />
 						<LineForm name="Dates">
 							<input type="date" name="start-date" defaultValue="2023-12-07" />
