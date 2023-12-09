@@ -1,10 +1,50 @@
-import {Evaluation} from "../App";
+import {useEffect, useState} from "react";
+import {Evaluation, Project} from "../App";
 
 interface ArrayProps {
-	evaluations?: Array<Evaluation>
+	data?: Project
 }
 
-function Array({evaluations}: ArrayProps) {
+function Array({data}: ArrayProps) {
+ 	const [evaluations, setEvaluations] = useState<Evaluation[]>([]);
+	useEffect(() => {
+		if (data?.evaluation) {
+				setEvaluations(data.evaluation);
+		}
+	}, [data]);
+
+	const formatDate = (timestamp: number) => {
+		const date = new Date(timestamp);
+		const year = date.getFullYear();
+		const month = (date.getMonth() + 1).toString().padStart(2, '0');
+		const day = date.getDate().toString().padStart(2, '0');
+
+		return (`${year}-${month}-${day}`);
+	};
+
+	const updateArray = async () => {
+		let nowDate = Date.now();
+		let newId = evaluations?.reduce((acc, obj) => obj.id > acc ? obj.id : acc, evaluations[0].id);
+		if (newId === undefined)
+			newId = 0;
+		let newEvaluation = {
+			id: newId + 1,
+			name: "new test evaluation",
+			creation_date: formatDate(nowDate),
+			validation_date: formatDate(nowDate),
+			status: "validated"
+		};
+		setEvaluations([...evaluations, newEvaluation]);
+		data?.evaluation.push(newEvaluation);
+
+		const res = await fetch("http://localhost:3000/project_management/project/1", {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data),
+		});
+	};
 
 	return (
 		<>
@@ -12,7 +52,7 @@ function Array({evaluations}: ArrayProps) {
 				<p className="justify-self-start self-center text-emerald-500 font-bold text-lg">
 					Évaluations validées ✓
 				</p>
-				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700">Nouvelle évaluation</button>
+				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700" onClick={updateArray}>Nouvelle évaluation</button>
 			</section>
 			<section className="mx-6 my-2 border-2 border-gray-150 rounded-xl">
 				<table className="table-fixed w-full">
@@ -32,7 +72,7 @@ function Array({evaluations}: ArrayProps) {
 						</tr>
 					</thead>
 					<tbody>
-						{evaluations && evaluations?.map((evaluation: Evaluation, index: number) => {
+						{evaluations !== undefined && evaluations.length > 0 && evaluations?.map((evaluation: Evaluation, index: number) => {
 							const creation_date = new Date(evaluation.creation_date);
 							const validation_date = new Date(evaluation.validation_date);
 							return (

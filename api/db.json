@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Extension des capacités logistiques",
       "reference": "com_rdi_001",
-      "status": "completed",
+      "status": "scoping",
       "manager_id": 0,
       "risk_model_id": 2,
       "start_date": "2023-12-07",
@@ -32,6 +32,55 @@
           "name": "Evaluation 03",
           "creation_date": "2023-12-05",
           "validation_date": "2024-01-04",
+          "status": "validated"
+        },
+        {
+          "id": 3,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 4,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 5,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 6,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 7,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 8,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 9,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
           "status": "validated"
         }
       ]

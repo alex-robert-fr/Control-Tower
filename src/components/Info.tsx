@@ -14,24 +14,20 @@ interface InfoProps {
 function Info({data}: InfoProps) {
 
 	const updateStatusAndModel = async (status: string, model: number | undefined) => {
-		console.log(data);
 		let updateData;
 		if (model === undefined)
 		{
-			console.log(`Status: ${status} Model: ${data?.risk_model_id}`);
 			const statusKey = Object.keys(StatusEnum).find(key => StatusEnum[key as keyof typeof StatusEnum] === status);
 			updateData = {
 				...data,
 				status: StatusEnum[statusKey as keyof typeof StatusEnum]
 			};
 		} else {
-			console.log(`Status: ${data?.status} Model: ${model}`);
 			updateData = {
 				...data,
 				risk_model_id: model
 			};
 		}
-		console.log(updateData)
 		const res = await fetch("http://localhost:3000/project_management/project/1", {
 			method: 'PUT',
 			headers: {
@@ -39,8 +35,6 @@ function Info({data}: InfoProps) {
 			},
 			body: JSON.stringify(updateData),
 		});
-		const dataUpdated = await res.json();
-		console.log(dataUpdated);
 	};
 	
 	return (
