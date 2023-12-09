@@ -1,34 +1,43 @@
 {
-		"project": [
-			{
-				"id": 1,
-				"name": "Extension des capacités logistiques",
-				"reference": "com_rdi_001",
-				"status": "completed",		
-				"manager_id": 0,
-				"risk_model_id": 2,
-				"start_date": "2023-12-08",
-				"end_date": "2023-12-08",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu !",
-				"domain": 1,
-				"program": 1
-			}
-		],
-		"manager": [
-			{
-				"id": 0,
-				"name": "Jean",
-				"lastname": "Dupont"
-			},
-			{
-				"id": 1,
-				"name": "John",
-				"lastname": "Doe"
-			}
-		],
-		"risk_model": [
-			{"id": 0, "model_name": "model 1"},
-			{"id": 1, "model_name": "model 2"},
-			{"id": 2, "model_name": "model 4"}
-		]
+  "project": [
+    {
+      "id": 1,
+      "name": "Extension des capacités logistiques",
+      "reference": "com_rdi_001",
+      "status": "scoping",
+      "manager_id": 0,
+      "risk_model_id": 0,
+      "start_date": "2023-12-08",
+      "end_date": "2023-12-08",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu !",
+      "domain": 1,
+      "program": 1
+    }
+  ],
+  "manager": [
+    {
+      "id": 0,
+      "name": "Jean",
+      "lastname": "Dupont"
+    },
+    {
+      "id": 1,
+      "name": "John",
+      "lastname": "Doe"
+    }
+  ],
+  "risk_model": [
+    {
+      "id": 0,
+      "model_name": "model 1"
+    },
+    {
+      "id": 1,
+      "model_name": "model 2"
+    },
+    {
+      "id": 2,
+      "model_name": "model 4"
+    }
+  ]
 }

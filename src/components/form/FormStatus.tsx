@@ -9,12 +9,14 @@ enum StatusEnum {
 
 interface FormStatusProps {
 	status?: string,
+	callApi: Function
 }
 
-function FormStatus({status}: FormStatusProps) {
+function FormStatus({status, callApi}: FormStatusProps) {
 	const [selectedStatus, setSelectedStatus] = useState(status);
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedStatus(event.target.value)
+		callApi(event.target.value, undefined);
 	};
 	useEffect(() => {
 		setSelectedStatus(status);

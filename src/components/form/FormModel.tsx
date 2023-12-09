@@ -11,10 +11,11 @@ const RiskModelSchema = z.object({
 type RiskModel = z.infer<typeof RiskModelSchema>;
 
 interface FormModelProps {
-	model_id?: number
+	model_id?: number,
+	callApi: Function
 }
 
-function FormModel({model_id}: FormModelProps) {
+function FormModel({model_id, callApi}: FormModelProps) {
 	
 	const fetchRiskModel = async () => {
 		const res = await fetch("http://localhost:3000/risk_model");
@@ -26,6 +27,7 @@ function FormModel({model_id}: FormModelProps) {
 	const [selectedModel, setSelectedModel] = useState(model_id);
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedModel(parseInt(event.target.value));
+		callApi("", parseInt(event.target.value));
 	};
 	useEffect(() => {
 		setSelectedModel(model_id);

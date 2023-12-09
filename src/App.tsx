@@ -1,6 +1,5 @@
 import './App.css';
 import Array from './components/Array.tsx';
-import {useQuery} from 'react-query';
 import Info from './components/Info.tsx';
 import {useEffect} from 'react';
 

@@ -38,6 +38,36 @@ function Info() {
 		return (ProjectSchema.parse(data));
 	};
 	const {data, isLoading, error} = useQuery<Project, Error>("project", fetchProject);
+
+	const updateStatusAndModel = async (status: string, model: number | undefined) => {
+		console.log(data);
+		let updateData;
+		if (model === undefined)
+		{
+			console.log(`Status: ${status} Model: ${data?.risk_model_id}`);
+			const statusKey = Object.keys(StatusEnum).find(key => StatusEnum[key as keyof typeof StatusEnum] === status);
+			updateData = {
+				...data,
+				status: StatusEnum[statusKey as keyof typeof StatusEnum]
+			};
+		} else {
+			console.log(`Status: ${data?.status} Model: ${model}`);
+			updateData = {
+				...data,
+				risk_model_id: model
+			};
+		}
+		console.log(updateData)
+		const res = await fetch("http://localhost:3000/project_management/project/1", {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(updateData),
+		});
+		const dataUpdated = await res.json();
+		console.log(dataUpdated);
+	};
 	
 	return (
 		<>
@@ -48,8 +78,8 @@ function Info() {
 				<Section className="row-span-2" title="Informations">
 					<div className="flex flex-col">
 						<FormManager manager_id={data?.manager_id} />
-						<FormStatus status={data?.status} />
-						<FormModel model_id={data?.risk_model_id} />
+						<FormStatus status={data?.status} callApi={updateStatusAndModel}/>
+						<FormModel model_id={data?.risk_model_id} callApi={updateStatusAndModel}/>
 						<LineForm name="Dates">
 							<input type="date" name="start-date" defaultValue="2023-12-07" />
 							<p>➔</p>
