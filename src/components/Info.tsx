@@ -5,6 +5,7 @@ import FormModel from "./form/FormModel";
 import FormStatus from "./form/FormStatus";
 import LineForm from "./form/LineForm";
 import {useQuery} from "react-query";
+import Description from "./Description";
 
 enum StatusEnum {
 	IN_PROGRESS = "in progress",
@@ -55,10 +56,7 @@ function Info() {
 						</LineForm>
 					</div>
 				</Section>
-				<Section title="Description du projet">
-					<p className="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu.</p>
-					<button className="mt-5 font-bold text-blue-600">Voir plus</button>
-				</Section>
+				<Description description={data?.description} />
 				<Section title="Domaine et programme">
 					<table className="w-3/4">
 						<thead className="text-gray-500">
