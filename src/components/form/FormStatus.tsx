@@ -13,12 +13,13 @@ interface FormStatusProps {
 
 function FormStatus({status}: FormStatusProps) {
 	const [selectedStatus, setSelectedStatus] = useState(status);
-	useEffect(() => {
-		setSelectedStatus(status);
-	}, [status]);
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedStatus(event.target.value)
 	};
+	useEffect(() => {
+		setSelectedStatus(status);
+	}, [status]);
+
 	return (
 		<LineForm name="Statut">
 			<select name="status" value={selectedStatus} onChange={handleChange}>

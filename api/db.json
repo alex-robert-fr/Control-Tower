@@ -6,7 +6,7 @@
 				"reference": "com_rdi_001",
 				"status": "completed",		
 				"manager_id": 0,
-				"risk_model_id": 1,
+				"risk_model_id": 2,
 				"start_date": "2023-12-08",
 				"end_date": "2023-12-08",
 				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu !",

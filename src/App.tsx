@@ -21,7 +21,6 @@ function App() {
 		console.log(data);
 	}
 	useEffect(() => {
-		console.log("Call")
 		//updateTest();
 	}, [])
 
