@@ -10,9 +10,9 @@ function FormStatus() {
 	return (
 		<LineForm name="Statut">
 			<select name="status">
-				{Object.values(StatusEnum).map((status: string) => {
+				{Object.values(StatusEnum).map((status: string, index: number) => {
 					return (
-						<option value={status}>
+						<option key={index} value={status}>
 							{status}
 						</option>
 					);

@@ -28,7 +28,7 @@ function FormModel() {
 					{data && data.length > 0 ? (
 						data.map((model: RiskModel, index: number) => {
 							return (
-								<option value={model.id}>
+								<option key={index} value={model.id}>
 									{model.model_name}
 								</option>
 							);

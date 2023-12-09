@@ -1,11 +1,11 @@
 {
 		"project": [
 			{
-				"id": 2,
+				"id": 1,
 				"name": "Extension des capacités logistiques",
 				"reference": "com_rdi_001",
-				"status": "IN_PROGRESS",		
-				"manager_id": 1,
+				"status": "in progress",		
+				"manager_id": 0,
 				"risk_model_id": 1,
 				"start_date": "2023-12-08",
 				"end_date": "2023-12-08",
@@ -21,7 +21,7 @@
 				"lastname": "Dupont"
 			},
 			{
-				"id": 0,
+				"id": 1,
 				"name": "John",
 				"lastname": "Doe"
 			}
