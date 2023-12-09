@@ -48,7 +48,7 @@ function App() {
 	return (
     <main className="shadow-custom rounded-lg pb-1">
 			<Info data={data} />
-			<Array data={data} />
+			<Array data={data} isLoading={isLoading} />
     </main>
   )
 }
