@@ -1,4 +1,11 @@
-function Array() {
+import {Evaluation} from "../App";
+
+interface ArrayProps {
+	evaluations?: Array<Evaluation>
+}
+
+function Array({evaluations}: ArrayProps) {
+
 	return (
 		<section className="mx-6 my-3 border-2 border-gray-150 rounded-xl">
 				<table className="table-fixed w-full">
@@ -18,28 +25,31 @@ function Array() {
 						</tr>
 					</thead>
 					<tbody>
-						<tr className="border-b-2 border-gray-150">
-							<td className="p-2">
-								29 nov. 2023
-							</td>
-							<td>
-								30 nov. 2023
-							</td>
-							<td>
-								Copil Nov.
-							</td>
-						</tr>
-						<tr>
-							<td className="p-2">
-								03 sept. 2023
-							</td>
-							<td>
-								05 sept. 2023
-							</td>
-							<td>
-								Copil Sept.
-							</td>
-						</tr>
+						{evaluations && evaluations?.map((evaluation: Evaluation, index: number) => {
+							const creation_date = new Date(evaluation.creation_date);
+							const validation_date = new Date(evaluation.validation_date);
+							return (
+								<tr key={index} className="border-b-2 border-gray-150">
+									<td className="p-2">
+										{creation_date.toLocaleString('fr-FR', {
+											day: '2-digit',
+											month: 'short',
+											year: 'numeric'
+										})}
+									</td>
+									<td>
+										{validation_date.toLocaleString('fr-FR', {
+											day: '2-digit',
+											month: 'short',
+											year: 'numeric'
+										})}
+									</td>
+									<td>
+										{evaluation.name}
+									</td>
+								</tr>
+							);
+						})}
 					</tbody>
 				</table>
 			</section>

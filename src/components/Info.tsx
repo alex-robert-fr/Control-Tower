@@ -1,43 +1,17 @@
-import {z} from "zod";
 import Section from "./Section";
 import FormManager from "./form/FormManager";
 import FormModel from "./form/FormModel";
 import FormStatus from "./form/FormStatus";
-import LineForm from "./form/LineForm";
-import {useQuery} from "react-query";
 import Description from "./Description";
 import DomainAndProgram from "./DomainAndProgram";
+import FormDates from "./form/FormDates";
+import {Project, StatusEnum} from "../App";
 
-enum StatusEnum {
-	IN_PROGRESS = "in progress",
-	SCOPING = "scoping",
-	COMPLETED = "completed"
-};
+interface InfoProps {
+	data?: Project
+}
 
-const ProjectSchema = z.object({
-	id: z.number(),
-	name: z.string(),
-	reference: z.string(),
-	status: z.nativeEnum(StatusEnum),
-	manager_id: z.number(),
-	risk_model_id: z.number(),
-	start_date: z.string(),
-	end_date: z.string().nullable().optional(),
-	description: z.string(),
-	domain: z.number(),
-	program: z.number().nullable().optional()
-});
-
-type Project = z.infer<typeof ProjectSchema>;
-
-
-function Info() {
-	const fetchProject = async () => {
-		const res = await fetch("http://localhost:3000/project_management/project/1");
-		const data = await res.json();
-		return (ProjectSchema.parse(data));
-	};
-	const {data, isLoading, error} = useQuery<Project, Error>("project", fetchProject);
+function Info({data}: InfoProps) {
 
 	const updateStatusAndModel = async (status: string, model: number | undefined) => {
 		console.log(data);
@@ -80,11 +54,7 @@ function Info() {
 						<FormManager manager_id={data?.manager_id} />
 						<FormStatus status={data?.status} callApi={updateStatusAndModel}/>
 						<FormModel model_id={data?.risk_model_id} callApi={updateStatusAndModel}/>
-						<LineForm name="Dates">
-							<input type="date" name="start-date" defaultValue="2023-12-07" />
-							<p>➔</p>
-							<input type="date" name="end-date" defaultValue="2023-12-08" />
-						</LineForm>
+						<FormDates start_date={data?.start_date} end_date={data?.end_date}/>
 					</div>
 				</Section>
 				<Description description={data?.description} />
