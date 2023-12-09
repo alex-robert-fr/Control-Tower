@@ -11,11 +11,14 @@ const RiskModelSchema = z.object({
 type RiskModel = z.infer<typeof RiskModelSchema>;
 
 interface FormModelProps {
-	model_id?: number,
-	callApi: Function
+	model_id?: number | null,
+	callApi: Function,
+	numEvaluation?: number,
 }
 
-function FormModel({model_id, callApi}: FormModelProps) {
+function FormModel({model_id, callApi, numEvaluation}: FormModelProps) {
+	if (numEvaluation === undefined)
+		numEvaluation = 0;
 	
 	const fetchRiskModel = async () => {
 		const res = await fetch("http://localhost:3000/risk_model");
@@ -24,10 +27,10 @@ function FormModel({model_id, callApi}: FormModelProps) {
 	}
 	const {data, isLoading, error} = useQuery<RiskModel[], Error>("model", fetchRiskModel);
 
-	const [selectedModel, setSelectedModel] = useState(model_id);
+	const [selectedModel, setSelectedModel] = useState<number | undefined | null>(model_id === null ? -1 : model_id);
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedModel(parseInt(event.target.value));
-		callApi("", parseInt(event.target.value));
+		callApi("", parseInt(event.target.value) === -1 ? null : parseInt(event.target.value));
 	};
 	useEffect(() => {
 		setSelectedModel(model_id);
@@ -40,7 +43,10 @@ function FormModel({model_id, callApi}: FormModelProps) {
 				) : error ? (
 					<p>Une erreur est survenue</p>
 				) : (
-					<select name="model" value={selectedModel} onChange={handleChange}>
+					<select name="model" value={selectedModel === null ? -1 : selectedModel} onChange={handleChange} disabled={numEvaluation > 0} >
+					<option value={-1}>
+						-- Choisissez un modèle de risque --
+					</option>
 					{data && data.length > 0 ? (
 						data.map((model: RiskModel, index: number) => {
 							return (

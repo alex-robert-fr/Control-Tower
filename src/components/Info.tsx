@@ -13,7 +13,7 @@ interface InfoProps {
 
 function Info({data}: InfoProps) {
 
-	const updateStatusAndModel = async (status: string, model: number | undefined) => {
+	const updateStatusAndModel = async (status: string, model: number | null) => {
 		let updateData;
 		if (model === undefined)
 		{
@@ -47,7 +47,7 @@ function Info({data}: InfoProps) {
 					<div className="flex flex-col">
 						<FormManager manager_id={data?.manager_id} />
 						<FormStatus status={data?.status} callApi={updateStatusAndModel}/>
-						<FormModel model_id={data?.risk_model_id} callApi={updateStatusAndModel}/>
+						<FormModel model_id={data?.risk_model_id} callApi={updateStatusAndModel} numEvaluation={data?.evaluation.length} />
 						<FormDates start_date={data?.start_date} end_date={data?.end_date}/>
 					</div>
 				</Section>

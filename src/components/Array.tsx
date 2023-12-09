@@ -101,11 +101,12 @@ function Array({data, isLoading}: ArrayProps) {
 									</tr>
 								);
 							}) : isLoading ? (
-								<td colSpan={4}>Chargement...</td>
+								<tr>
+									<td colSpan={4}>Chargement...</td>
+								</tr>
 							) : (
 								<tr>
 									<td colSpan={4}>Aucune données trouvées</td>
-
 								</tr>
 							)}
 						</tbody>
