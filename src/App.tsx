@@ -4,6 +4,7 @@ import LineForm from './components/form/LineForm.tsx';
 import Array from './components/Array.tsx';
 import FormManager from './components/form/FormManager.tsx';
 import FormStatus from './components/form/FormStatus.tsx';
+import FormModel from './components/form/FormModel.tsx';
 
 function App() {
   return (
@@ -16,19 +17,7 @@ function App() {
 					<div className="flex flex-col">
 						<FormManager />
 						<FormStatus />
-						<LineForm name="Modèle de risque">
-							<select name="model">
-								<option value="model 1">
-									Modèle 1
-								</option>
-								<option value="model 2">
-									Modèle 2
-								</option>
-								<option value="model 3">
-									Modèle 3
-								</option>
-							</select>
-						</LineForm>
+						<FormModel />
 						<LineForm name="Dates">
 							<input type="date" name="start-date" defaultValue="2023-12-07" />
 							<p>➔</p>
