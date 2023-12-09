@@ -6,6 +6,7 @@ import FormStatus from "./form/FormStatus";
 import LineForm from "./form/LineForm";
 import {useQuery} from "react-query";
 import Description from "./Description";
+import DomainAndProgram from "./DomainAndProgram";
 
 enum StatusEnum {
 	IN_PROGRESS = "in progress",
@@ -57,34 +58,7 @@ function Info() {
 					</div>
 				</Section>
 				<Description description={data?.description} />
-				<Section title="Domaine et programme">
-					<table className="w-3/4">
-						<thead className="text-gray-500">
-							<tr>
-								<th>
-									Domaine
-								</th>
-								<th>
-									Programme
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td className="py-2">
-									<p className="inline uppercase text-xs border border-gray-400 py-1 px-2 rounded-full">
-										Fonction commerciale
-									</p>
-								</td>
-								<td>
-									<p className="inline text-xs border border-gray-300 p-1.5 rounded">
-										Microsoft
-									</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</Section>
+				<DomainAndProgram />
 				<p className="justify-self-start self-center text-emerald-500 font-bold text-lg">
 					Évaluations validées ✓
 				</p>
