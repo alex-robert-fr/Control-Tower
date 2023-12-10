@@ -2,8 +2,7 @@ import {z} from 'zod';
 import './App.css';
 import Array from './components/Array.tsx';
 import Info from './components/Info.tsx';
-import {useEffect} from 'react';
-import {useQuery} from 'react-query';
+import {useQuery} from '@tanstack/react-query';
 
 export enum StatusEnum {
 	IN_PROGRESS = "in progress",
@@ -44,7 +43,10 @@ function App() {
 		const data = await res.json();
 		return (ProjectSchema.parse(data));
 	};
-	const {data, isLoading, error} = useQuery<Project, Error>("project", fetchProject);
+	const {data, isLoading, isError} = useQuery<Project, Error>({
+		queryKey: ["project"],
+		queryFn: fetchProject
+	});
 	return (
     <main className="shadow-custom rounded-lg pb-1">
 			<Info data={data} />

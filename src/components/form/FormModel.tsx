@@ -1,6 +1,6 @@
 import {z} from "zod";
 import LineForm from "./LineForm";
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
 import React, {useEffect, useState} from "react";
 
 const RiskModelSchema = z.object({
@@ -25,7 +25,10 @@ function FormModel({model_id, callApi, numEvaluation}: FormModelProps) {
 		const data = await res.json();
 		return (RiskModelSchema.array().parse(data));
 	}
-	const {data, isLoading, error} = useQuery<RiskModel[], Error>("model", fetchRiskModel);
+	const {data, isLoading, error} = useQuery<RiskModel[], Error>({
+		queryKey: ["model"], 
+		queryFn: fetchRiskModel
+	});
 
 	const [selectedModel, setSelectedModel] = useState<number | undefined | null>(model_id === null ? -1 : model_id);
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

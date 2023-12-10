@@ -1,4 +1,4 @@
-import {useQuery} from "react-query";
+import {useQuery} from "@tanstack/react-query";
 import LineForm from "./LineForm";
 import {z} from "zod";
 import {useEffect, useState} from "react";
@@ -21,7 +21,10 @@ function FormManager({manager_id}: FormManagerProps) {
 		const data = await res.json();
 		return (ManagerSchema.array().parse(data));
 	}
-	const {data, isLoading, error} = useQuery<Manager[], Error>("manager", fetchManager);
+	const {data, isLoading, error} = useQuery<Manager[], Error>({
+	queryKey: ["manager"],
+	queryFn: fetchManager
+	});
 
 	const [selectedManagerId, setSeletedManagerId] = useState(manager_id);
 	{/*
