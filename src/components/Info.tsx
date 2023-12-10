@@ -5,7 +5,7 @@ import FormStatus from "./form/FormStatus";
 import Description from "./Description";
 import DomainAndProgram from "./DomainAndProgram";
 import FormDates from "./form/FormDates";
-import {Project, StatusEnum} from "../App";
+import {Project} from "../App";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -17,6 +17,8 @@ interface InfoProps {
 
 function Info({data, isLoading, isError}: InfoProps) {
 
+	const updateStatusAndModel = () => {};
+	{/*
 	const updateStatusAndModel = async (status: string, model: number | null) => {
 		let updateData;
 		if (model === undefined)
@@ -40,7 +42,7 @@ function Info({data, isLoading, isError}: InfoProps) {
 			body: JSON.stringify(updateData),
 		});
 	};
-	
+	*/}
 	return (
 		<>
 			<h1 className="text-2xl uppercase font-bold text-left mx-6 pt-6">
@@ -55,8 +57,8 @@ function Info({data, isLoading, isError}: InfoProps) {
 						<FormDates isLoadingProject={isLoading} isErrorProject={isError} start_date={data?.start_date} end_date={data?.end_date}/>
 					</div>
 				</Section>
-				<Description description={data?.description} />
-				<DomainAndProgram />
+				<Description isLoadingProject={isLoading} isErrorProject={isError} description={data?.description} />
+				<DomainAndProgram idDomain={data?.domain} idProgram={data?.program} />
 			</section>
 		</>
 	);

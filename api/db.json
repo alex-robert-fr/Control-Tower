@@ -10,7 +10,7 @@
       "start_date": "2023-12-07",
       "end_date": "2023-12-10",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu !",
-      "domain": 1,
+      "domain": 0,
       "program": 1,
       "evaluation": []
     }
@@ -40,5 +40,25 @@
       "id": 2,
       "model_name": "model 4"
     }
-  ]
+  ],
+	"domains": [
+		{
+			"id": 0,
+			"name": "Fonction commercial"
+		},
+		{
+			"id": 1,
+			"name": "Autre domaine"
+		}
+	],
+	"programs": [
+		{
+			"id": 0,
+			"name": "Adobe"
+		},
+		{
+			"id": 1,
+			"name": "Microsoft"
+		}
+	]
 }

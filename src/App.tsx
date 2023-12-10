@@ -9,6 +9,16 @@ export const RiskModelSchema = z.object({
 	model_name: z.string()
 });
 
+export const DomainSchema = z.object({
+	id: z.number(),
+	name: z.string()
+});
+
+export const ProgramSchema = z.object({
+	id: z.number(),
+	name: z.string()
+});
+
 export enum StatusEnum {
 	IN_PROGRESS = "in progress",
 	SCOPING = "scoping",
@@ -39,6 +49,8 @@ const ProjectSchema = z.object({
 });
 
 export type RiskModel = z.infer<typeof RiskModelSchema>;
+export type Domain = z.infer<typeof DomainSchema>;
+export type Program = z.infer<typeof ProgramSchema>;
 export type Project = z.infer<typeof ProjectSchema>;
 export type Evaluation = z.infer<typeof EvaluationSchema>;
 
