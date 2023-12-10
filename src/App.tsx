@@ -4,6 +4,11 @@ import Array from './components/Array.tsx';
 import Info from './components/Info.tsx';
 import {useQuery} from '@tanstack/react-query';
 
+export const RiskModelSchema = z.object({
+	id: z.number(),
+	model_name: z.string()
+});
+
 export enum StatusEnum {
 	IN_PROGRESS = "in progress",
 	SCOPING = "scoping",
@@ -33,6 +38,7 @@ const ProjectSchema = z.object({
 	evaluation: EvaluationSchema.array()
 });
 
+export type RiskModel = z.infer<typeof RiskModelSchema>;
 export type Project = z.infer<typeof ProjectSchema>;
 export type Evaluation = z.infer<typeof EvaluationSchema>;
 
@@ -49,8 +55,14 @@ function App() {
 	});
 	return (
     <main className="shadow-custom rounded-lg pb-1">
-			<Info data={data} />
-			<Array data={data} isLoading={isLoading} />
+			{false ? (
+				<p>Erreur</p>
+			) : (
+				<>
+					<Info data={data} isLoading={isLoading} isError={isError} />
+					<Array data={data} isLoading={isLoading} />
+				</>
+			)}		
     </main>
   )
 }

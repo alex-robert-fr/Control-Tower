@@ -2,6 +2,8 @@ import {useQuery} from "@tanstack/react-query";
 import LineForm from "./LineForm";
 import {z} from "zod";
 import {useEffect, useState} from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ManagerSchema = z.object({
 	id: z.number(),
@@ -12,52 +14,51 @@ const ManagerSchema = z.object({
 type Manager = z.infer<typeof ManagerSchema>;
 
 interface FormManagerProps {
-	manager_id?: number
+	projectManagerId?: number
 }
 
-function FormManager({manager_id}: FormManagerProps) {
+function FormManager({projectManagerId}: FormManagerProps) {
+
 	const fetchManager = async () => {
 		const res = await fetch("http://localhost:3000/manager/");
 		const data = await res.json();
 		return (ManagerSchema.array().parse(data));
 	}
-	const {data, isLoading, error} = useQuery<Manager[], Error>({
-	queryKey: ["manager"],
-	queryFn: fetchManager
+	const {data, isLoading, isError} = useQuery<Manager[], Error>({
+		queryKey: ["manager"],
+		queryFn: fetchManager
 	});
-
-	const [selectedManagerId, setSeletedManagerId] = useState(manager_id);
+	
 	{/*
+	const [selectedManagerId, setSeletedManagerId] = useState(projectManagerId);
 	const handleChangeManager = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSeletedManagerId(parseInt(event.target.value));
 	}
-	*/}
 
 	useEffect(() => {
-		if (manager_id !== undefined) {
-			setSeletedManagerId(manager_id);
+		if (projectManagerId !== undefined) {
+			setSeletedManagerId(projectManagerId);
 		}
-	}, [manager_id]);
+	}, [projectManagerId]);
+	*/}
 
 	return (
 		<LineForm name="Manager">
-			<div className="flex gap-x-5">
-			{isLoading ? (
-				<p>Chargement...</p>
-			) : error ? (
-				<p>Une erreur est survenue</p>
-			) : data && data.length > 0 ? (
-				data.map((managers: Manager, index: number) => {
-				return (
-					<div key={index}>
-						<input className="hidden" type="radio" id={`${managers.name} ${managers.lastname}`} name="manager" value={managers.id} defaultChecked={managers.id === selectedManagerId} />
-						<label htmlFor={`${managers.name} ${managers.lastname}`} className={managers.id === selectedManagerId ? "border border-gray-300 p-2 rounded-full" : "p-2 border border-white"}>{`${managers.name} ${managers.lastname}`}</label>
-					</div>
-				);
-			})
-			) : <p>Aucun manager disponible.</p>
-			}
-			</div>
+			{isLoading || isError ? (
+				<Skeleton containerClassName="flex-1" />
+			) : (
+				<div className="flex gap-x-5">
+				{data !== undefined && data.map((manager: Manager, index: number) => {
+					return (
+						<div key={index}>
+							<input className="hidden" type="radio" id={`${manager.name} ${manager.lastname}`} name="manager" value={manager.id} defaultChecked={manager.id === projectManagerId} />
+							<label htmlFor={`${manager.name} ${manager.lastname}`} className={manager.id === projectManagerId ? "border border-gray-300 p-2 rounded-full" : "p-2 border border-white"}>{`${manager.name} ${manager.lastname}`}</label>
+						</div>
+					);	
+				})}
+				</div>
+			)}
+			
 		</LineForm>
 	);
 }
