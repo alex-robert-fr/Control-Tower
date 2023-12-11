@@ -4,9 +4,9 @@
       "id": 1,
       "name": "Extension des capacités logistiques",
       "reference": "com_rdi_001",
-      "status": "in progress",
+      "status": "scoping",
       "manager_id": 1,
-      "risk_model_id": 0,
+      "risk_model_id": 2,
       "start_date": "2023-12-07",
       "end_date": "2023-12-10",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu !",
@@ -14,24 +14,24 @@
       "program": 1,
       "evaluation": [
         {
+          "id": 0,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-11",
+          "validation_date": "2023-12-11",
+          "status": "validated"
+        },
+        {
           "id": 1,
           "name": "new test evaluation",
-          "creation_date": "2023-12-09",
-          "validation_date": "2023-12-09",
+          "creation_date": "2023-12-11",
+          "validation_date": "2023-12-11",
           "status": "validated"
         },
         {
           "id": 2,
           "name": "new test evaluation",
-          "creation_date": "2023-12-09",
-          "validation_date": "2023-12-09",
-          "status": "validated"
-        },
-        {
-          "id": 3,
-          "name": "new test evaluation",
-          "creation_date": "2023-12-09",
-          "validation_date": "2023-12-09",
+          "creation_date": "2023-12-11",
+          "validation_date": "2023-12-11",
           "status": "validated"
         }
       ]

@@ -30,7 +30,7 @@ const EvaluationSchema = z.object({
 	name: z.string(),
 	creation_date: z.string(),
 	validation_date: z.string(),
-	status: z.string()
+	status: z.string() //TODO: Attention ici enum
 });
 
 export const ProjectSchema = z.object({
@@ -73,7 +73,7 @@ function App() {
 			) : (
 				<>
 					<Info data={data} isLoading={isLoading} isError={isError} />
-					<Array isLoadingProject={isLoading} isErrorProject={isError} />
+					<Array dataProject={data} isLoadingProject={isLoading} isErrorProject={isError} modelId={data?.risk_model_id} />
 				</>
 			)}		
     </main>

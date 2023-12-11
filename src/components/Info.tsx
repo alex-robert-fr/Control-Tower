@@ -5,10 +5,9 @@ import FormStatus from "./form/FormStatus";
 import Description from "./Description";
 import DomainAndProgram from "./DomainAndProgram";
 import FormDates from "./form/FormDates";
-import {Project, ProjectSchema, StatusEnum} from "../App";
+import {Project} from "../App";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 interface InfoProps {
 	data?: Project
@@ -17,36 +16,6 @@ interface InfoProps {
 }
 
 function Info({data, isLoading, isError}: InfoProps) {
-
-	
-
-	const updateStatusAndModel = async (status: string, model: number | null) => {
-		let updateData = {name: "o"};
-		{/*
-		if (model === undefined)
-		{
-			const statusKey = Object.keys(StatusEnum).find(key => StatusEnum[key as keyof typeof StatusEnum] === status);
-			updateData = {
-				...data,
-				status: StatusEnum[statusKey as keyof typeof StatusEnum]
-			};
-		} else {
-			updateData = {
-				...data,
-				risk_model_id: model
-			};
-		}
-		*/}
-		const res = await fetch("http://localhost:3000/project_management/project/1", {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(updateData),
-		});
-	};
-
-
 
 	return (
 		<>

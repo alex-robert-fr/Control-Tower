@@ -1,29 +1,26 @@
-import {useEffect, useState} from "react";
-import {Evaluation, Project, fetchProject} from "../App";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {Evaluation, Project} from "../App";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import {useQuery} from "@tanstack/react-query";
 
 interface ArrayProps {
-	
+	dataProject?: Project,
 	isLoadingProject: boolean,
 	isErrorProject: boolean
+	modelId?: number | null
 }
 
-function Array({isLoadingProject, isErrorProject}: ArrayProps) {
- 	const [evaluations, setEvaluations] = useState<Evaluation[]>([]);
-	const {data, isLoading, isError} = useQuery<Project, Error>({
-		queryKey: ["project"],
-		queryFn: fetchProject
-	});
+function Array({dataProject, isLoadingProject, isErrorProject, modelId}: ArrayProps) {
+	let evaluations: Evaluation[] | undefined;
+	let numEvaluation: number = 0;
+	if (modelId === undefined || modelId === null)
+		modelId = -1;
+	if (dataProject !== undefined)
+	{
+		evaluations = dataProject.evaluation;
+		numEvaluation = evaluations.length;
+	}
 
-
-	useEffect(() => {
-			if (!isLoading && !isError && data !== undefined)
-				setEvaluations(data.evaluation)
-	}, [isLoading, isError, data]);
-
-{/*
 	const formatDate = (timestamp: number) => {
 		const date = new Date(timestamp);
 		const year = date.getFullYear();
@@ -33,41 +30,58 @@ function Array({isLoadingProject, isErrorProject}: ArrayProps) {
 		return (`${year}-${month}-${day}`);
 	};
 
-	const updateArray = async () => {
-		let nowDate = Date.now();
-		let newId;
-		console.log(evaluations)
-		if (evaluations.length > 0)
-			newId = evaluations?.reduce((acc, obj) => obj.id > acc ? obj.id : acc, evaluations[0].id);
-		if (newId === undefined || evaluations === undefined)
-			newId = 0;
-		let newEvaluation = {
-			id: newId + 1,
-			name: "new test evaluation",
-			creation_date: formatDate(nowDate),
-			validation_date: formatDate(nowDate),
-			status: "validated"
-		};
-		setEvaluations([...evaluations, newEvaluation]);
-		data?.evaluation.push(newEvaluation);
-
-		const res = await fetch("http://localhost:3000/project_management/project/1", {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data),
-		});
+	const generateNewData = () => {
+		if (dataProject !== undefined) {
+			let nowDate = Date.now();
+			let newId;
+			if (numEvaluation > 0 && evaluations !== undefined)
+				newId = evaluations.reduce((acc, obj) => obj.id > acc ? obj.id : acc, evaluations[0].id);
+			else
+				newId = -1;
+			let newEvaluation = {
+				id: newId + 1,
+				name: "new test evaluation",
+				creation_date: formatDate(nowDate),
+				validation_date: formatDate(nowDate),
+				status: "validated"
+			};
+			let updateData =  {
+				...dataProject,
+				evaluation: [...dataProject.evaluation, newEvaluation]
+			};
+			mutation.mutate(updateData);
+		}
 	};
-*/}
-	const updateArray = () => {};
+
+	const queryClient = useQueryClient();
+	const mutation = useMutation({
+		mutationFn: (newData: Project) => {
+			return (fetch("http://localhost:3000/project_management/project/1", {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(newData),
+			})
+			.then(res => res.json())
+		)},
+		onSuccess() {
+			queryClient.invalidateQueries({queryKey: ["project"]});
+		},
+	});
+
+	const updateArray = () => {
+		generateNewData();
+	};
+
+
 	return (
 		<>
 			<section className="grid grid-cols-2 mx-6" >
 				<p className="justify-self-start self-center text-emerald-500 font-bold text-lg">
 					Évaluations validées ✓
 				</p>
-				<button className="col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700" onClick={updateArray}>Nouvelle évaluation</button>
+				<button className="transition col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700 disabled:bg-blue-200" onClick={updateArray} disabled={modelId === -1}>Nouvelle évaluation</button>
 			</section>
 				<section className="mx-6 my-2 border-2 border-gray-150 rounded-xl">
 					<table className="table-fixed w-full">
@@ -87,12 +101,12 @@ function Array({isLoadingProject, isErrorProject}: ArrayProps) {
 							</tr>
 						</thead>
 						<tbody>
-							{!isLoadingProject && !isErrorProject ? (
-								evaluations.length > 0 ? evaluations.map((evaluation: Evaluation, index: number) => {
+							{!isLoadingProject && !isErrorProject && evaluations !== undefined ? (
+								numEvaluation > 0 ? evaluations.map((evaluation: Evaluation, index: number) => {
 									const creation_date = new Date(evaluation.creation_date);
 									const validation_date = new Date(evaluation.validation_date);
 									return (
-										<tr key={index} className={index < evaluations.length - 1 ? "border-b-2 border-gray-150" : ""}>
+										<tr key={index} className={index < numEvaluation - 1 ? "border-b-2 border-gray-150" : ""}>
 											<td className="p-2">
 												{creation_date.toLocaleString('fr-FR', {
 													day: '2-digit',

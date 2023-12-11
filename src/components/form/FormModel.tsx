@@ -3,7 +3,7 @@ import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {Project, RiskModel, RiskModelSchema} from "../../App";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import React, {useState} from "react";
+import React from "react";
 
 interface FormModelProps {
 	projectData?: Project
@@ -61,7 +61,7 @@ function FormModel({projectData, model_id, numEvaluation}: FormModelProps) {
 				{isLoading || isError ? (
 					<Skeleton containerClassName="flex-1" />
 				) : (
-					<select name="model" value={model_id === null ? -1 : model_id} onChange={updateModelInput} >
+					<select name="model" value={model_id === null ? -1 : model_id} onChange={updateModelInput} disabled={numEvaluation > 0} >
 					<option value={-1}>
 						-- Choisissez un modèle de risque --
 					</option>
