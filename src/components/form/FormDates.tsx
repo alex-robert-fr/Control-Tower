@@ -17,9 +17,9 @@ function FormDates({isLoadingProject, isErrorProject, start_date, end_date}: For
 				<Skeleton containerClassName="flex-1" />
 			) : (
 				<>
-				<input type="date" name="start-date" defaultValue={start_date} />
+				<input type="date" name="start-date" defaultValue={start_date} disabled />
 				<p>➔</p>
-				<input type="date" name="end-date" defaultValue={end_date ? end_date : start_date} />
+				<input type="date" name="end-date" defaultValue={end_date ? end_date : start_date} disabled />
 				</>
 			)}
 		</LineForm>
