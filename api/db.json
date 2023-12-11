@@ -6,42 +6,13 @@
       "reference": "com_rdi_001",
       "status": "in progress",
       "manager_id": 1,
-      "risk_model_id": 2,
+      "risk_model_id": -1,
       "start_date": "2023-12-07",
       "end_date": "2023-12-10",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet nunc eu eros suscipit, eget sagittis risus faucibus. Nam suscipit odio quis sem pulvinar porta. Duis non odio vel risus laoreet tempus. Sed tristique diam a urna finibus, ac fermentum nunc mattis. Phasellus eu libero a sapien pharetra tincidunt. Maecenas malesuada erat a accumsan tempus. Nam id erat lectus. Integer suscipit sodales leo nec blandit. ",
       "domain": 0,
       "program": 1,
-      "evaluation": [
-        {
-          "id": 0,
-          "name": "new test evaluation",
-          "creation_date": "2023-12-11",
-          "validation_date": "2023-12-11",
-          "status": "validated"
-        },
-        {
-          "id": 1,
-          "name": "new test evaluation",
-          "creation_date": "2023-12-11",
-          "validation_date": "2023-12-11",
-          "status": "validated"
-        },
-        {
-          "id": 2,
-          "name": "new test evaluation",
-          "creation_date": "2023-12-11",
-          "validation_date": "2023-12-11",
-          "status": "validated"
-        },
-        {
-          "id": 3,
-          "name": "new test evaluation",
-          "creation_date": "2023-12-11",
-          "validation_date": "2023-12-11",
-          "status": "validated"
-        }
-      ]
+      "evaluation": []
     }
   ],
   "manager": [

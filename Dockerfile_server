@@ -1,0 +1,8 @@
+FROM node:current-alpine3.18 as BUILD_IMAGE
+WORKDIR /api/control-tower
+
+RUN npm install json-server
+COPY ./api .
+
+EXPOSE 3000
+CMD ["npx", "json-server", "--watch", "db.json", "--routes", "routes.json", "--port", "3000", "--host", "0.0.0.0"]

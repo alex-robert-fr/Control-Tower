@@ -1,0 +1,22 @@
+version: '3'
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile_app
+    networks:
+      - api
+    ports:
+      - "80:8080"
+
+  json-server:
+    build:
+      context: .
+      dockerfile: Dockerfile_server
+    networks:
+      - api
+    ports:
+      - "3000:3000"
+
+networks:
+  api:
