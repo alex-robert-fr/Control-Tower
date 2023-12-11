@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import LineForm from "./LineForm";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import {Project, ProjectSchema, StatusEnum} from "../../App";
-import {UseMutationResult, useMutation, useQueryClient} from "@tanstack/react-query";
+import {Project, StatusEnum} from "../../App";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 interface FormStatusProps {
 	projectData?: Project,
@@ -12,7 +12,7 @@ interface FormStatusProps {
 }
 
 function FormStatus({projectData, isLoading, isError}:FormStatusProps) {
-	var projectStatus: string;
+	let projectStatus: string;
 	if (projectData?.status !== undefined)
 		projectStatus = projectData.status;
 	else
@@ -23,7 +23,7 @@ function FormStatus({projectData, isLoading, isError}:FormStatusProps) {
 		setSelectedStatus(projectStatus);
 	}, [projectStatus]);
 
-	const generateNewData = (event :React.ChangeEvent<HTMLSelectElement>) => {
+	const generateNewData = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const newStatus = event.target.value;
 		const statusKey = Object.keys(StatusEnum).find(key => StatusEnum[key as keyof typeof StatusEnum] === newStatus);
 		if (projectData && statusKey)

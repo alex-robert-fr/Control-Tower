@@ -58,7 +58,7 @@ function Info({data, isLoading, isError}: InfoProps) {
 					<div className="flex flex-col">
 						<FormManager projectManagerId={data?.manager_id} />
 						<FormStatus projectData={data} isLoading={isLoading} isError={isError} />
-						<FormModel  model_id={data?.risk_model_id} callApi={updateStatusAndModel} numEvaluation={data !== undefined ? data?.evaluation.length : 0} />
+						<FormModel projectData={data} model_id={data?.risk_model_id} numEvaluation={data !== undefined ? data?.evaluation.length : 0} />
 						<FormDates isLoadingProject={isLoading} isErrorProject={isError} start_date={data?.start_date} end_date={data?.end_date}/>
 					</div>
 				</Section>

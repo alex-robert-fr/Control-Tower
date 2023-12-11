@@ -68,7 +68,7 @@ function App() {
 	});
 	return (
     <main className="shadow-custom rounded-lg pb-1">
-			{false ? (
+			{isError ? (
 				<p>Erreur</p>
 			) : (
 				<>
