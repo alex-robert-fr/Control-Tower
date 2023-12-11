@@ -12,7 +12,29 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id orci placerat, pulvinar metus eu !",
       "domain": 0,
       "program": 1,
-      "evaluation": []
+      "evaluation": [
+        {
+          "id": 1,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 2,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        },
+        {
+          "id": 3,
+          "name": "new test evaluation",
+          "creation_date": "2023-12-09",
+          "validation_date": "2023-12-09",
+          "status": "validated"
+        }
+			]
     }
   ],
   "manager": [

@@ -1,19 +1,29 @@
 import {useEffect, useState} from "react";
-import {Evaluation, Project} from "../App";
+import {Evaluation, Project, fetchProject} from "../App";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import {useQuery} from "@tanstack/react-query";
 
 interface ArrayProps {
-	data?: Project,
-	isLoading: boolean
+	
+	isLoadingProject: boolean,
+	isErrorProject: boolean
 }
 
-function Array({data, isLoading}: ArrayProps) {
+function Array({isLoadingProject, isErrorProject}: ArrayProps) {
  	const [evaluations, setEvaluations] = useState<Evaluation[]>([]);
-	useEffect(() => {
-		if (data?.evaluation) {
-				setEvaluations(data.evaluation);
-		}
-	}, [data]);
+	const {data, isLoading, isError} = useQuery<Project, Error>({
+		queryKey: ["project"],
+		queryFn: fetchProject
+	});
 
+
+	useEffect(() => {
+			if (!isLoading && !isError && data !== undefined)
+				setEvaluations(data.evaluation)
+	}, [isLoading, isError, data]);
+
+{/*
 	const formatDate = (timestamp: number) => {
 		const date = new Date(timestamp);
 		const year = date.getFullYear();
@@ -49,7 +59,8 @@ function Array({data, isLoading}: ArrayProps) {
 			body: JSON.stringify(data),
 		});
 	};
-
+*/}
+	const updateArray = () => {};
 	return (
 		<>
 			<section className="grid grid-cols-2 mx-6" >
@@ -76,37 +87,46 @@ function Array({data, isLoading}: ArrayProps) {
 							</tr>
 						</thead>
 						<tbody>
-							{evaluations.length > 0 ? evaluations?.map((evaluation: Evaluation, index: number) => {
-								const creation_date = new Date(evaluation.creation_date);
-								const validation_date = new Date(evaluation.validation_date);
-								return (
-									<tr key={index} className={index < evaluations.length - 1 ? "border-b-2 border-gray-150" : ""}>
-										<td className="p-2">
-											{creation_date.toLocaleString('fr-FR', {
-												day: '2-digit',
-												month: 'short',
-												year: 'numeric'
-											})}
-										</td>
-										<td>
-											{validation_date.toLocaleString('fr-FR', {
-												day: '2-digit',
-												month: 'short',
-												year: 'numeric'
-											})}
-										</td>
-										<td>
-											{evaluation.name}
-										</td>
+							{!isLoadingProject && !isErrorProject ? (
+								evaluations.length > 0 ? evaluations.map((evaluation: Evaluation, index: number) => {
+									const creation_date = new Date(evaluation.creation_date);
+									const validation_date = new Date(evaluation.validation_date);
+									return (
+										<tr key={index} className={index < evaluations.length - 1 ? "border-b-2 border-gray-150" : ""}>
+											<td className="p-2">
+												{creation_date.toLocaleString('fr-FR', {
+													day: '2-digit',
+													month: 'short',
+													year: 'numeric'
+												})}
+											</td>
+											<td>
+												{validation_date.toLocaleString('fr-FR', {
+													day: '2-digit',
+													month: 'short',
+													year: 'numeric'
+												})}
+											</td>
+											<td>
+												{evaluation.name}
+											</td>
+										</tr>
+									);
+								}): (
+									<tr>
+										<td colSpan={4}>Aucune évaluation créé pour le moment</td>
 									</tr>
-								);
-							}) : isLoading ? (
+							)) : (
 								<tr>
-									<td colSpan={4}>Chargement...</td>
-								</tr>
-							) : (
-								<tr>
-									<td colSpan={4}>Aucune données trouvées</td>
+									<td>
+										<Skeleton className="w-3/4" />
+									</td>
+									<td>
+										<Skeleton className="w-3/4" />
+									</td>
+									<td>
+										<Skeleton className="w-3/4" />
+									</td>
 								</tr>
 							)}
 						</tbody>

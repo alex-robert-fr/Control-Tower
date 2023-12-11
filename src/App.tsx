@@ -54,13 +54,14 @@ export type Program = z.infer<typeof ProgramSchema>;
 export type Project = z.infer<typeof ProjectSchema>;
 export type Evaluation = z.infer<typeof EvaluationSchema>;
 
+export const fetchProject = async () => {
+	const res = await fetch("http://localhost:3000/project_management/project/1");
+	const data = await res.json();
+	return (ProjectSchema.parse(data));
+};
 
 function App() {
-	const fetchProject = async () => {
-		const res = await fetch("http://localhost:3000/project_management/project/1");
-		const data = await res.json();
-		return (ProjectSchema.parse(data));
-	};
+	
 	const {data, isLoading, isError} = useQuery<Project, Error>({
 		queryKey: ["project"],
 		queryFn: fetchProject
@@ -72,7 +73,7 @@ function App() {
 			) : (
 				<>
 					<Info data={data} isLoading={isLoading} isError={isError} />
-					<Array data={data} isLoading={isLoading} />
+					<Array isLoadingProject={isLoading} isErrorProject={isError} />
 				</>
 			)}		
     </main>
