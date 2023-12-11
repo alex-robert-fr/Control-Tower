@@ -5,9 +5,10 @@ import FormStatus from "./form/FormStatus";
 import Description from "./Description";
 import DomainAndProgram from "./DomainAndProgram";
 import FormDates from "./form/FormDates";
-import {Project} from "../App";
+import {Project, ProjectSchema, StatusEnum} from "../App";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 interface InfoProps {
 	data?: Project
@@ -17,10 +18,11 @@ interface InfoProps {
 
 function Info({data, isLoading, isError}: InfoProps) {
 
-	const updateStatusAndModel = () => {};
-	{/*
+	
+
 	const updateStatusAndModel = async (status: string, model: number | null) => {
-		let updateData;
+		let updateData = {name: "o"};
+		{/*
 		if (model === undefined)
 		{
 			const statusKey = Object.keys(StatusEnum).find(key => StatusEnum[key as keyof typeof StatusEnum] === status);
@@ -34,6 +36,7 @@ function Info({data, isLoading, isError}: InfoProps) {
 				risk_model_id: model
 			};
 		}
+		*/}
 		const res = await fetch("http://localhost:3000/project_management/project/1", {
 			method: 'PUT',
 			headers: {
@@ -42,7 +45,9 @@ function Info({data, isLoading, isError}: InfoProps) {
 			body: JSON.stringify(updateData),
 		});
 	};
-	*/}
+
+
+
 	return (
 		<>
 			<h1 className="text-2xl uppercase font-bold text-left mx-6 pt-6">
@@ -52,7 +57,7 @@ function Info({data, isLoading, isError}: InfoProps) {
 				<Section className="row-span-2" title="Informations">
 					<div className="flex flex-col">
 						<FormManager projectManagerId={data?.manager_id} />
-						<FormStatus projectStatus={data?.status} isLoading={isLoading} isError={isError} callApi={updateStatusAndModel}/>
+						<FormStatus projectData={data} isLoading={isLoading} isError={isError} />
 						<FormModel  model_id={data?.risk_model_id} callApi={updateStatusAndModel} numEvaluation={data !== undefined ? data?.evaluation.length : 0} />
 						<FormDates isLoadingProject={isLoading} isErrorProject={isError} start_date={data?.start_date} end_date={data?.end_date}/>
 					</div>

@@ -30,8 +30,6 @@ function DomainAndProgram({idDomain, idProgram} : DomainAndProgramProps) {
 		queryFn: fetchPrograms
 	});
 
-	console.log(idProgram)
-
 	let nameDomain, nameProgram;
 	if (!isLoadingDomain && dataDomain !== undefined)
 		nameDomain = dataDomain.find(obj => obj.id === idDomain);

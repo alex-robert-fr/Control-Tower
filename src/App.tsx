@@ -33,7 +33,7 @@ const EvaluationSchema = z.object({
 	status: z.string()
 });
 
-const ProjectSchema = z.object({
+export const ProjectSchema = z.object({
 	id: z.number(),
 	name: z.string(),
 	reference: z.string(),

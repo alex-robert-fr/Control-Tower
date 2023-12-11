@@ -4,8 +4,8 @@
       "id": 1,
       "name": "Extension des capacités logistiques",
       "reference": "com_rdi_001",
-      "status": "in progress",
-      "manager_id": 0,
+      "status": "completed",
+      "manager_id": 1,
       "risk_model_id": 2,
       "start_date": "2023-12-07",
       "end_date": "2023-12-10",
@@ -34,7 +34,7 @@
           "validation_date": "2023-12-09",
           "status": "validated"
         }
-			]
+      ]
     }
   ],
   "manager": [
@@ -63,24 +63,24 @@
       "model_name": "model 4"
     }
   ],
-	"domains": [
-		{
-			"id": 0,
-			"name": "Fonction commercial"
-		},
-		{
-			"id": 1,
-			"name": "Autre domaine"
-		}
-	],
-	"programs": [
-		{
-			"id": 0,
-			"name": "Adobe"
-		},
-		{
-			"id": 1,
-			"name": "Microsoft"
-		}
-	]
+  "domains": [
+    {
+      "id": 0,
+      "name": "Fonction commercial"
+    },
+    {
+      "id": 1,
+      "name": "Autre domaine"
+    }
+  ],
+  "programs": [
+    {
+      "id": 0,
+      "name": "Adobe"
+    },
+    {
+      "id": 1,
+      "name": "Microsoft"
+    }
+  ]
 }

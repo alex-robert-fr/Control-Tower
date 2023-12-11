@@ -1,7 +1,6 @@
 import {useQuery} from "@tanstack/react-query";
 import LineForm from "./LineForm";
 import {z} from "zod";
-import {useEffect, useState} from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -28,19 +27,6 @@ function FormManager({projectManagerId}: FormManagerProps) {
 		queryKey: ["manager"],
 		queryFn: fetchManager
 	});
-	
-	{/*
-	const [selectedManagerId, setSeletedManagerId] = useState(projectManagerId);
-	const handleChangeManager = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setSeletedManagerId(parseInt(event.target.value));
-	}
-
-	useEffect(() => {
-		if (projectManagerId !== undefined) {
-			setSeletedManagerId(projectManagerId);
-		}
-	}, [projectManagerId]);
-	*/}
 
 	return (
 		<LineForm name="Manager">
