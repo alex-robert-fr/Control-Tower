@@ -5,7 +5,7 @@
       "name": "Extension des capacités logistiques",
       "reference": "com_rdi_001",
       "status": "scoping",
-      "manager_id": 1,
+      "manager_id": -1,
       "risk_model_id": 0,
       "start_date": "2023-12-07",
       "end_date": "2023-12-10",
