@@ -37,8 +37,8 @@ function DomainAndProgram({idDomain, idProgram} : DomainAndProgramProps) {
 		nameProgram = dataProgram.find(obj => obj.id === idProgram);
 
 	return (
-		<Section title="Domaine et programme">
-			<table className="w-3/4">
+		<Section className="max-sm:max-w-md max-sm:w-full" title="Domaine et programme">
+			<table className="max-sm:w-full sm:w-3/4">
 				<thead className="text-gray-500">
 					<tr>
 						<th>

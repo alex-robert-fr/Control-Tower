@@ -83,7 +83,7 @@ function Array({dataProject, isLoadingProject, isErrorProject, modelId}: ArrayPr
 				</p>
 				<button className="transition col-start-2 justify-self-end bg-blue-500 text-white font-bold px-4 py-1.5 rounded-md my-2 hover:bg-blue-600 active:bg-blue-700 disabled:bg-blue-200" onClick={updateArray} disabled={modelId === -1}>Nouvelle évaluation</button>
 			</section>
-				<section className="mx-6 my-2 border-2 border-gray-150 rounded-xl">
+				<section className="max-md:overflow-x-scroll mx-6 my-2 border-2 border-gray-150 rounded-xl">
 					<table className="table-fixed w-full">
 						<thead className="border-b text-sm text-gray-500">
 							<tr>

@@ -12,7 +12,7 @@ interface DescriptionProps {
 function Description({isLoadingProject, isErrorProject, description}: DescriptionProps) {
 	const [showMore, setShowMore] = useState(false);
 	return (
-		<Section title="Description du projet">
+		<Section className="max-sm:max-w-md" title="Description du projet">
 			{ isLoadingProject || isErrorProject ? (
 				<Skeleton count={2} containerClassName="flex-1" />
 			) : (

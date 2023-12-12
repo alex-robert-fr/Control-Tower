@@ -36,7 +36,7 @@ function FormManager({projectManagerId}: FormManagerProps) {
 				<div className="flex gap-x-5">
 				{data !== undefined && data.map((manager: Manager, index: number) => {
 					return (
-						<div key={index}>
+						<div className="" key={index}>
 							<input className="hidden" type="radio" id={`${manager.name} ${manager.lastname}`} name="manager" value={manager.id} defaultChecked={manager.id === projectManagerId} />
 							<label htmlFor={`${manager.name} ${manager.lastname}`} className={manager.id === projectManagerId ? "border border-gray-300 p-2 rounded-full" : "p-2 border border-white"}>{`${manager.name} ${manager.lastname}`}</label>
 						</div>

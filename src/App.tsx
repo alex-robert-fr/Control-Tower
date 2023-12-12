@@ -74,7 +74,7 @@ function App() {
 					<p className="text-2xl w-3/4">Désolé, quelque chose s'est mal passé de notre côté. Notre équipe technique est en train de résoudre le problème. Veuillez réessayer ultérieurement.</p>
 				</div>
 			) : (
-				<main className="shadow-custom rounded-lg m-8 pb-1">
+				<main className="sm:shadow-custom sm:rounded-lg sm:m-8 sm:pb-1">
 					<Info data={data} isLoading={isLoading} isError={isError} />
 					<Array dataProject={data} isLoadingProject={isLoading} isErrorProject={isError} modelId={data?.risk_model_id} />
 				</main>
