@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {Evaluation, Project} from "../App";
+import {Evaluation, EvaluationEnum, Project, StatusEnum} from "../App";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -43,8 +43,9 @@ function Array({dataProject, isLoadingProject, isErrorProject, modelId}: ArrayPr
 				name: "new test evaluation",
 				creation_date: formatDate(nowDate),
 				validation_date: formatDate(nowDate),
-				status: "validated"
+				status: EvaluationEnum.VALIDATED
 			};
+			console.log(newEvaluation)
 			let updateData =  {
 				...dataProject,
 				evaluation: [...dataProject.evaluation, newEvaluation]

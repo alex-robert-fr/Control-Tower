@@ -19,6 +19,12 @@ export const ProgramSchema = z.object({
 	name: z.string()
 });
 
+export enum EvaluationEnum {
+	IN_PROGRESS = "en cours",
+	VALIDATED = "validé",
+	REFERENCE = "référence"
+}
+
 export enum StatusEnum {
 	IN_PROGRESS = "in progress",
 	SCOPING = "scoping",
@@ -30,7 +36,7 @@ const EvaluationSchema = z.object({
 	name: z.string(),
 	creation_date: z.string(),
 	validation_date: z.string(),
-	status: z.string() //TODO: Attention ici enum
+	status: z.nativeEnum(EvaluationEnum)
 });
 
 export const ProjectSchema = z.object({
