@@ -1,10 +1,10 @@
-interface UiItemSelectedProps {
+interface ItemSelectedProps {
   id: number;
   name: string;
   isChecked: boolean;
 }
 
-function UiItemSelected({ id, name, isChecked }: UiItemSelectedProps) {
+function ItemSelected({ id, name, isChecked }: ItemSelectedProps) {
   return (
     <div>
       <input
@@ -27,4 +27,4 @@ function UiItemSelected({ id, name, isChecked }: UiItemSelectedProps) {
   );
 }
 
-export default UiItemSelected;
+export default ItemSelected;
