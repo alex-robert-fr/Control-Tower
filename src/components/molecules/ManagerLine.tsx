@@ -2,29 +2,30 @@ import Skeleton from "react-loading-skeleton";
 import useManagers from "../../hooks/useManagers";
 import ItemSelected from "../atoms/ItemSelected";
 import LineForm from "./LineForm";
+import {Manager} from "../../schemas";
 
 interface ManagerLineProps {
-  id_project_manager: number;
+  idProjectManager?: number;
+  isProjectLoading: boolean;
 }
 
-function ManagerLine({ id_project_manager }: ManagerLineProps) {
+function ManagerLine({ idProjectManager, isProjectLoading }: ManagerLineProps) {
   const { data, isLoading, isError } = useManagers();
+
+	if (isProjectLoading || isLoading || isError || !data)
+		return <Skeleton containerClassName="flex-1" />
 
   return (
     <LineForm name="Manager">
-      {isLoading || isError ? (
-        <Skeleton containerClassName="flex-1" />
-      ) : (
-        data &&
-        data.map((manager, index) => (
+      {data.map((manager: Manager) => (
           <ItemSelected
-            key={index}
+            key={manager.id}
             id={manager.id}
             name={`${manager.name} ${manager.lastname}`}
-            isChecked={id_project_manager === manager.id}
+            isChecked={idProjectManager === manager.id}
           />
         ))
-      )}
+      }
     </LineForm>
   );
 }
