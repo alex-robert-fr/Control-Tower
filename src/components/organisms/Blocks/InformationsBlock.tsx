@@ -3,6 +3,7 @@ import useProject from "../../../hooks/useProject";
 import BlockTemplate from "./BlockTemplate";
 import ManagerLine from "../../molecules/ManagerLine";
 import DateLine from "../../molecules/DateLine";
+import StatusLine from "../../molecules/StatusLine";
 
 function InformationsBlock() {
   const { data, isLoading } = useProject();
@@ -16,7 +17,11 @@ function InformationsBlock() {
             idProjectManager={data?.manager_id}
             isProjectLoading={isLoading}
           />
-					<DateLine />
+          <StatusLine
+            projectStatus={data?.status}
+            isProjectLoading={isLoading}
+          />
+          <DateLine />
         </BlockTemplate>
       </section>
     </>

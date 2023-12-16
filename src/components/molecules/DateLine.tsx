@@ -5,8 +5,13 @@ import LineForm from "./LineForm";
 function DateLine() {
   const { data, isLoading } = useProject();
 
-  if (isLoading || !data)
-    return <Skeleton containerClassName="flex-1" />;
+  if (isLoading || !data) {
+    return (
+      <LineForm name="Dates">
+        <Skeleton containerClassName="flex-1" />
+      </LineForm>
+    );
+  }
 
   return (
     <LineForm name="Dates">
