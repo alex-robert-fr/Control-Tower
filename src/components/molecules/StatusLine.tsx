@@ -18,7 +18,7 @@ function StatusLine({ projectStatus, isProjectLoading }: StatusLineProps) {
 	
   return (
     <LineForm name="Statut">
-      <select name="status" value={projectStatus}>
+      <select name="status" defaultValue={projectStatus}>
         {Object.values(StatusEnum).map((status_enum: string, index: number) => {
           return (
             <option key={index} value={status_enum}>

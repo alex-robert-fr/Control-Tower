@@ -4,6 +4,7 @@ import BlockTemplate from "./BlockTemplate";
 import ManagerLine from "../../molecules/ManagerLine";
 import DateLine from "../../molecules/DateLine";
 import StatusLine from "../../molecules/StatusLine";
+import ModelLine from "../../molecules/ModelLine";
 
 function InformationsBlock() {
   const { data, isLoading } = useProject();
@@ -20,6 +21,10 @@ function InformationsBlock() {
           <StatusLine
             projectStatus={data?.status}
             isProjectLoading={isLoading}
+          />
+          <ModelLine
+            idRiskModelProject={data?.risk_model_id}
+            isLoadingProject={isLoading}
           />
           <DateLine />
         </BlockTemplate>

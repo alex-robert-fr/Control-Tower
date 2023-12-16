@@ -12,7 +12,13 @@ interface ManagerLineProps {
 function ManagerLine({ idProjectManager, isProjectLoading }: ManagerLineProps) {
   const { data, isLoading, isError } = useManagers();
 
-  if (isProjectLoading || isLoading || isError || !data) {
+  if (
+    idProjectManager === undefined ||
+    isProjectLoading ||
+    isLoading ||
+    isError ||
+    !data
+  ) {
     return (
       <LineForm name="Manager">
         <Skeleton containerClassName="flex-1" />

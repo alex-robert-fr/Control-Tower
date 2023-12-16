@@ -8,7 +8,7 @@ export const ProjectSchema = z.object({
   reference: z.string(),
   status: z.nativeEnum(StatusEnum),
   manager_id: z.number(),
-  risk_model_id: z.number().nullable(),
+  risk_model_id: z.number(),
   start_date: z.string(),
   end_date: z.string().nullable().optional(),
   description: z.string(),
