@@ -1,24 +1,32 @@
 import Skeleton from "react-loading-skeleton";
 import { StatusEnum } from "../../enums";
 import LineForm from "./LineForm";
+import { ContainerStatusLineProps } from "./containers/ContainerStatusLine";
 
-interface StatusLineProps {
-  projectStatus?: string;
-  isProjectLoading: boolean;
+interface StatusLineProps extends ContainerStatusLineProps {
+  updateStatusInput: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-function StatusLine({ projectStatus, isProjectLoading }: StatusLineProps) {
-	if (isProjectLoading || !projectStatus) {
-		return (
-			<LineForm name="Statut">
-				<Skeleton containerClassName="flex-1" />
-			</LineForm>
-		)
-	}
-	
+function StatusLine({
+  projectStatus,
+  isProjectLoading,
+  updateStatusInput,
+}: StatusLineProps) {
+  if (isProjectLoading || !projectStatus) {
+    return (
+      <LineForm name="Statut">
+        <Skeleton containerClassName="flex-1" />
+      </LineForm>
+    );
+  }
+
   return (
     <LineForm name="Statut">
-      <select name="status" defaultValue={projectStatus}>
+      <select
+        name="status"
+        defaultValue={projectStatus}
+        onChange={updateStatusInput}
+      >
         {Object.values(StatusEnum).map((status_enum: string, index: number) => {
           return (
             <option key={index} value={status_enum}>
