@@ -9,10 +9,10 @@ interface StatusLineProps extends ContainerStatusLineProps {
 
 function StatusLine({
   projectStatus,
-  isProjectLoading,
+  isLoadingProject,
   updateStatusInput,
 }: StatusLineProps) {
-  if (isProjectLoading || !projectStatus) {
+  if (isLoadingProject || !projectStatus) {
     return (
       <LineForm name="Statut">
         <Skeleton containerClassName="flex-1" />

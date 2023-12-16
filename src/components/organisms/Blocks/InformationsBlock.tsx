@@ -3,8 +3,8 @@ import useProject from "../../../hooks/useProject";
 import BlockTemplate from "./BlockTemplate";
 import ManagerLine from "../../molecules/ManagerLine";
 import DateLine from "../../molecules/DateLine";
-import ModelLine from "../../molecules/ModelLine";
 import ContainerStatusLine from "../../molecules/containers/ContainerStatusLine";
+import ContainerModelLine from "../../molecules/containers/ContainerModelLine";
 
 function InformationsBlock() {
   const { data, isLoading } = useProject();
@@ -20,9 +20,9 @@ function InformationsBlock() {
           />
           <ContainerStatusLine
             projectStatus={data?.status}
-            isProjectLoading={isLoading}
+            isLoadingProject={isLoading}
           />
-          <ModelLine
+          <ContainerModelLine
             idRiskModelProject={data?.risk_model_id}
             isLoadingProject={isLoading}
           />

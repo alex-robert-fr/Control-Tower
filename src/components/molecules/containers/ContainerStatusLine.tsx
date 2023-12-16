@@ -1,16 +1,16 @@
-import useStatus from "../../../hooks/useStatus";
+import useChangeStatus from "../../../hooks/useChangeStatus";
 import StatusLine from "../StatusLine";
 
 export interface ContainerStatusLineProps {
   projectStatus?: string;
-  isProjectLoading: boolean;
+  isLoadingProject: boolean;
 }
 
 function ContainerStatusLine({
   projectStatus,
-  isProjectLoading,
+  isLoadingProject,
 }: ContainerStatusLineProps) {
-  const updateStatus = useStatus();
+  const updateStatus = useChangeStatus();
 
   const updateStatusInput = (event: React.ChangeEvent<HTMLSelectElement>) => {
     updateStatus(event.target.value);
@@ -19,7 +19,7 @@ function ContainerStatusLine({
   return (
     <StatusLine
       projectStatus={projectStatus}
-      isProjectLoading={isProjectLoading}
+      isLoadingProject={isLoadingProject}
       updateStatusInput={updateStatusInput}
     />
   );

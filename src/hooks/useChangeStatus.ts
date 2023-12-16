@@ -3,7 +3,7 @@ import { StatusEnum } from "../enums";
 import apiService from "../services/apiService";
 import useProject from "./useProject";
 
-function useStatus() {
+function useChangeStatus() {
   const { data, isLoading } = useProject();
   const queryClient = useQueryClient();
 
@@ -16,7 +16,6 @@ function useStatus() {
       if (!isLoading && data) {
         newData = { ...data, status: statusKey };
       }
-      console.log(statusKey);
       apiService.updateData(newData);
     },
     onSuccess: () => {
@@ -27,4 +26,4 @@ function useStatus() {
   return updateStatus.mutate;
 }
 
-export default useStatus;
+export default useChangeStatus;
