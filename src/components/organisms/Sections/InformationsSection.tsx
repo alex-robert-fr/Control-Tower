@@ -2,6 +2,7 @@ import Skeleton from "react-loading-skeleton";
 import useProject from "../../../hooks/useProject";
 import InformationsBlock from "../Blocks/InformationsBlock";
 import DescriptionBlock from "../Blocks/DescriptionBlock";
+import DomainAndProgramBlock from "../Blocks/DomainAndProgramBlock";
 
 function InformationsSection() {
   const { data, isLoading } = useProject();
@@ -13,6 +14,7 @@ function InformationsSection() {
       </h1>
       <InformationsBlock />
 			<DescriptionBlock />
+			<DomainAndProgramBlock />
     </>
   );
 }
