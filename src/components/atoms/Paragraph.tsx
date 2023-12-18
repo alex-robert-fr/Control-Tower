@@ -5,6 +5,7 @@ interface ParagraphProps {
   isLoadingProject?: boolean;
   characterLimit?: number;
   showMore?: boolean;
+  className?: string;
 }
 
 function Paragraph({
@@ -12,12 +13,15 @@ function Paragraph({
   isLoadingProject,
   characterLimit,
   showMore,
+  className,
 }: ParagraphProps) {
   if (isLoadingProject || !text)
     return <Skeleton count={2} containerClassName="flex-1" />;
 
   if (characterLimit && !showMore)
-    return <p>{text.substring(0, characterLimit)}...</p>;
+    return (
+      <p className={className || ""}>{text.substring(0, characterLimit)}...</p>
+    );
 
   return <p>{text}</p>;
 }

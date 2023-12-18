@@ -21,6 +21,7 @@ function ContainerDescription() {
         isLoadingProject={isLoading}
         characterLimit={100}
         showMore={showMore}
+				className="mb-3"
       />
       <TextButton text={textInButton} onClick={click} />
     </>

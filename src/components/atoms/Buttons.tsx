@@ -7,7 +7,7 @@ interface ButtonProps {
 function Button({ text, className, onClick }: ButtonProps) {
   return (
     <button
-      className={`font-bold text-base ${className || ""}`}
+      className={`font-bold text-base py-2 ${className || ""}`}
       onClick={onClick}
     >
       {text}

@@ -5,11 +5,15 @@ import DateLine from "../../molecules/DateLine";
 import ContainerStatusLine from "../../molecules/containers/ContainerStatusLine";
 import ContainerModelLine from "../../molecules/containers/ContainerModelLine";
 
-function InformationsBlock() {
+interface InformationsBlockProps {
+  className?: string;
+}
+
+function InformationsBlock({ className }: InformationsBlockProps) {
   const { data, isLoading } = useProject();
 
   return (
-    <BlockTemplate title="Informations">
+    <BlockTemplate className={`sm:grid ${className || ""}`} title="Informations">
       <ManagerLine
         idProjectManager={data?.manager_id}
         isProjectLoading={isLoading}

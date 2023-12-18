@@ -28,14 +28,16 @@ function ManagerLine({ idProjectManager, isProjectLoading }: ManagerLineProps) {
 
   return (
     <LineForm name="Manager">
-      {data.map((manager: Manager) => (
-        <ItemSelected
-          key={manager.id}
-          id={manager.id}
-          name={`${manager.name} ${manager.lastname}`}
-          isChecked={idProjectManager === manager.id}
-        />
-      ))}
+			<div className="grid grid-cols-2 sm:w-1/2 max-w-xs">
+				{data.map((manager: Manager) => (
+					<ItemSelected
+						key={manager.id}
+						id={manager.id}
+						name={`${manager.name} ${manager.lastname}`}
+						isChecked={idProjectManager === manager.id}
+					/>
+				))}
+			</div>
     </LineForm>
   );
 }

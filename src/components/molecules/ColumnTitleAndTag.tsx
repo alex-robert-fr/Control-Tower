@@ -27,7 +27,7 @@ function ColumnTitleAndTag({
 
   return (
     <div>
-      <p>{title}</p>
+      <p className="font-bold text-gray-500 pb-2">{title}</p>
       <TagComponent text={textTag} />
     </div>
   );
