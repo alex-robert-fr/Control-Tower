@@ -8,22 +8,21 @@ interface ParagraphProps {
   className?: string;
 }
 
-function Paragraph({
-  text,
-  isLoadingProject,
-  characterLimit,
-  showMore,
-  className,
+export default function Paragraph({
+  text = "",
+  isLoadingProject = false,
+  characterLimit = 0,
+  showMore = false,
+  className = "",
 }: ParagraphProps) {
   if (isLoadingProject || !text)
     return <Skeleton count={2} containerClassName="flex-1" />;
 
-  if (characterLimit && !showMore)
-    return (
-      <p className={className || ""}>{text.substring(0, characterLimit)}...</p>
-    );
+  const renderText = () => {
+    if (characterLimit && !showMore)
+      return `${text.substring(0, characterLimit)}...`;
+    else return text;
+  };
 
-  return <p className={className || ""}>{text}</p>;
+  return <p className={className}>{renderText()}</p>;
 }
-
-export default Paragraph;

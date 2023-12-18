@@ -1,4 +1,4 @@
-import {RoundedTag} from "../components/atoms/Tags";
+import {RoundedTag} from "@atoms";
 import ColumnTitleAndTag from "../components/molecules/ColumnTitleAndTag";
 import useDomain from "../hooks/useDomain";
 import useProject from "../hooks/useProject";

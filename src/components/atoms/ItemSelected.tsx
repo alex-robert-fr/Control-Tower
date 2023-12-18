@@ -4,7 +4,13 @@ interface ItemSelectedProps {
   isChecked: boolean;
 }
 
-function ItemSelected({ id, name, isChecked }: ItemSelectedProps) {
+export default function ItemSelected({
+  id,
+  name,
+  isChecked,
+}: ItemSelectedProps) {
+  const displayBorder = isChecked ? "border-gray-300" : "border-white";
+
   return (
     <div>
       <input
@@ -17,14 +23,10 @@ function ItemSelected({ id, name, isChecked }: ItemSelectedProps) {
       />
       <label
         htmlFor={name}
-        className={`p-2 border rounded-full ${
-          isChecked ? "border-gray-300" : "border-white"
-        }`}
+        className={`p-2 border rounded-full ${displayBorder}`}
       >
         {name}
       </label>
     </div>
   );
 }
-
-export default ItemSelected;

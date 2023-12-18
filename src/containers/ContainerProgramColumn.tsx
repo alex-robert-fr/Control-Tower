@@ -1,4 +1,4 @@
-import {RectangularTag} from "../components/atoms/Tags";
+import {RectangularTag} from "@atoms";
 import ColumnTitleAndTag from "../components/molecules/ColumnTitleAndTag";
 import useProgram from "../hooks/useProgram";
 import useProject from "../hooks/useProject";

@@ -1,7 +1,7 @@
 import Skeleton from "react-loading-skeleton";
-import { StatusEnum } from "../../enums";
 import LineForm from "./LineForm";
 import {ContainerStatusLineProps} from "../../containers/ContainerStatusLine";
+import {StatusEnum} from "@enums";
 
 interface StatusLineProps extends ContainerStatusLineProps {
   updateStatusInput: (event: React.ChangeEvent<HTMLSelectElement>) => void;
