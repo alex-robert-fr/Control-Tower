@@ -1,18 +1,20 @@
 import Skeleton from "react-loading-skeleton";
 import LineForm from "./LineForm";
 import useModelRisk from "../../hooks/useModelRisk";
-import { RiskModel } from "../../App";
 import { ContainerModelLineProps } from "./containers/ContainerModelLine";
 import React from "react";
+import { RiskModel } from "../../schemas";
 
 interface ModelLineProps extends ContainerModelLineProps {
   updateModelInput: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  isDisabled?: boolean;
 }
 
 function ModelLine({
   idRiskModelProject,
   isLoadingProject,
   updateModelInput,
+  isDisabled = false,
 }: ModelLineProps) {
   const { data, isLoading, isError } = useModelRisk();
 
@@ -37,6 +39,7 @@ function ModelLine({
         name="model"
         defaultValue={idRiskModelProject}
         onChange={updateModelInput}
+				disabled={isDisabled}
       >
         <option value={-1}>-- Choisissez un modèle de risque --</option>
         {data.map((model: RiskModel) => {
