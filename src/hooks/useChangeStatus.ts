@@ -15,8 +15,8 @@ function useChangeStatus() {
       let newData = {};
       if (!isLoading && data) {
         newData = { ...data, status: statusKey };
+        apiService.updateData(newData);
       }
-      apiService.updateData(newData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["project"] });
