@@ -2,8 +2,8 @@ import useProject from "../../../hooks/useProject";
 import BlockTemplate from "./BlockTemplate";
 import ManagerLine from "../../molecules/ManagerLine";
 import DateLine from "../../molecules/DateLine";
-import ContainerStatusLine from "../../molecules/containers/ContainerStatusLine";
-import ContainerModelLine from "../../molecules/containers/ContainerModelLine";
+import ContainerStatusLine from "../../../containers/ContainerStatusLine";
+import ContainerModelLine from "../../../containers/ContainerModelLine";
 
 interface InformationsBlockProps {
   className?: string;

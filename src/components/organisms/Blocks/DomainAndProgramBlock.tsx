@@ -1,5 +1,5 @@
-import ContainerDomainColumn from "../../molecules/containers/ContainerDomainColumn";
-import ContainerProgramColumn from "../../molecules/containers/ContainerProgramColumn";
+import ContainerDomainColumn from "../../../containers/ContainerDomainColumn";
+import ContainerProgramColumn from "../../../containers/ContainerProgramColumn";
 import BlockTemplate from "./BlockTemplate";
 
 function DomainAndProgramBlock() {

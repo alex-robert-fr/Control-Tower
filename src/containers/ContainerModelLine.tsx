@@ -1,6 +1,6 @@
-import useChangeRiskModel from "../../../hooks/useChangeRiskModel";
-import useProject from "../../../hooks/useProject";
-import ModelLine from "../ModelLine";
+import ModelLine from "../components/molecules/ModelLine";
+import useChangeRiskModel from "../hooks/useChangeRiskModel";
+import useProject from "../hooks/useProject";
 
 export interface ContainerModelLineProps {
   idRiskModelProject?: number;

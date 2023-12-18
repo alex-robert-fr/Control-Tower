@@ -1,8 +1,8 @@
-import useProgram from "../../../hooks/useProgram";
-import useProject from "../../../hooks/useProject";
-import { Program } from "../../../schemas";
-import { RectangularTag } from "../../atoms/Tags";
-import ColumnTitleAndTag from "../ColumnTitleAndTag";
+import {RectangularTag} from "../components/atoms/Tags";
+import ColumnTitleAndTag from "../components/molecules/ColumnTitleAndTag";
+import useProgram from "../hooks/useProgram";
+import useProject from "../hooks/useProject";
+import {Program} from "../schemas";
 
 function ContainerProgramColumn() {
   const { data: projectData, isLoading: isProjectLoading } = useProject();

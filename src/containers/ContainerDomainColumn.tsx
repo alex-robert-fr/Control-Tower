@@ -1,8 +1,8 @@
-import useDomain from "../../../hooks/useDomain";
-import useProject from "../../../hooks/useProject";
-import { Domain } from "../../../schemas";
-import { RoundedTag } from "../../atoms/Tags";
-import ColumnTitleAndTag from "../ColumnTitleAndTag";
+import {RoundedTag} from "../components/atoms/Tags";
+import ColumnTitleAndTag from "../components/molecules/ColumnTitleAndTag";
+import useDomain from "../hooks/useDomain";
+import useProject from "../hooks/useProject";
+import {Domain} from "../schemas";
 
 function ContainerDomainColumn() {
   const { data: projectData, isLoading: isProjectLoading } = useProject();

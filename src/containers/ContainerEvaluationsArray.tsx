@@ -1,5 +1,5 @@
-import useProject from "../../../hooks/useProject";
-import EvaluationsArray from "../EvaluationsArray";
+import EvaluationsArray from "../components/molecules/EvaluationsArray";
+import useProject from "../hooks/useProject";
 
 function ContainerEvaluationsArray() {
   const { data, isLoading } = useProject();

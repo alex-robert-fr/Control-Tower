@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useProject from "../../../hooks/useProject";
-import { TextButton } from "../../atoms/Buttons";
-import Paragraph from "../../atoms/Paragraph";
+import useProject from "../hooks/useProject";
+import Paragraph from "../components/atoms/Paragraph";
+import {TextButton} from "../components/atoms/Buttons";
 
 function ContainerDescription() {
   const { data, isLoading } = useProject();

@@ -1,7 +1,7 @@
+import ContainerEvaluationsArray from "../../../containers/ContainerEvaluationsArray";
 import useAddEvaluation from "../../../hooks/useAddEvaluation";
 import { Project } from "../../../schemas";
 import { FilledButton } from "../../atoms/Buttons";
-import ContainerEvaluationsArray from "../../molecules/containers/ContainerEvaluationsArray";
 
 interface EvaluationsSectionProps {
   projectData?: Project;

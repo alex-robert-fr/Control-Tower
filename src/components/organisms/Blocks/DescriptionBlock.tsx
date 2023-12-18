@@ -1,4 +1,4 @@
-import ContainerDescription from "../../molecules/containers/ContainerDescription";
+import ContainerDescription from "../../../containers/ContainerDescription";
 import BlockTemplate from "./BlockTemplate";
 
 function DescriptionBlock() {

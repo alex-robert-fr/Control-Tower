@@ -1,5 +1,5 @@
-import useChangeStatus from "../../../hooks/useChangeStatus";
-import StatusLine from "../StatusLine";
+import StatusLine from "../components/molecules/StatusLine";
+import useChangeStatus from "../hooks/useChangeStatus";
 
 export interface ContainerStatusLineProps {
   projectStatus?: string;

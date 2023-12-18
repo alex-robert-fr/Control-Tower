@@ -1,9 +1,9 @@
 import Skeleton from "react-loading-skeleton";
 import LineForm from "./LineForm";
 import useModelRisk from "../../hooks/useModelRisk";
-import { ContainerModelLineProps } from "./containers/ContainerModelLine";
 import React from "react";
 import { RiskModel } from "../../schemas";
+import {ContainerModelLineProps} from "../../containers/ContainerModelLine";
 
 interface ModelLineProps extends ContainerModelLineProps {
   updateModelInput: (event: React.ChangeEvent<HTMLSelectElement>) => void;
