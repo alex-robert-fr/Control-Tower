@@ -8,3 +8,5 @@ export const EvaluationSchema = z.object({
   validation_date: z.string(),
   status: z.nativeEnum(EvaluationEnum),
 });
+
+export type Evaluation = z.infer<typeof EvaluationSchema>;

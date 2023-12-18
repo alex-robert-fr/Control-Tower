@@ -4,10 +4,10 @@ interface ButtonProps {
   className?: string;
 }
 
-function Button({ text, className, onClick }: ButtonProps) {
+function Button({ text, className = "", onClick }: ButtonProps) {
   return (
     <button
-      className={`font-bold text-base py-2 ${className || ""}`}
+      className={`font-bold text-base py-1.5 ${className}`}
       onClick={onClick}
     >
       {text}
@@ -19,14 +19,22 @@ interface TextButtonProps extends ButtonProps {
   textColor?: string;
 }
 
-export function TextButton({ text, textColor, onClick }: TextButtonProps) {
+export function TextButton({
+  text,
+  textColor = "text-blue-600",
+  onClick,
+}: TextButtonProps) {
   return <Button text={text} className={textColor} onClick={onClick} />;
 }
 
-TextButton.defaultProps = {
-  textColor: "text-blue-600",
-};
+interface FilledButtonProps extends ButtonProps {
+  backgroundColor?: string;
+}
 
-export function FilledButton() {
-  return <button>Filled button</button>;
+export function FilledButton({
+  text,
+  backgroundColor = "bg-blue",
+  onClick,
+}: FilledButtonProps) {
+  return <Button text={text} className={`text-white px-4 rounded-md ${backgroundColor}-500 hover:${backgroundColor}-600 active:${backgroundColor}-700 disabled:${backgroundColor}-200`} onClick={onClick} />;
 }
