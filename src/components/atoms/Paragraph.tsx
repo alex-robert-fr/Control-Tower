@@ -23,7 +23,7 @@ function Paragraph({
       <p className={className || ""}>{text.substring(0, characterLimit)}...</p>
     );
 
-  return <p>{text}</p>;
+  return <p className={className || ""}>{text}</p>;
 }
 
 export default Paragraph;

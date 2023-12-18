@@ -5,13 +5,10 @@ function ContainerEvaluationsArray() {
   const { data, isLoading } = useProject();
 
   return (
-    <>
-      <p>ContainerArray</p>
-      <EvaluationsArray
-        evaluationsData={data?.evaluation}
-        isLoadingProject={isLoading}
-      />
-    </>
+    <EvaluationsArray
+      evaluationsData={data?.evaluation}
+      isLoadingProject={isLoading}
+    />
   );
 }
 

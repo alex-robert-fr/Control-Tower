@@ -5,12 +5,17 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-function Button({ text, className = "", onClick, disabled = false }: ButtonProps) {
+function Button({
+  text,
+  className = "",
+  onClick,
+  disabled = false,
+}: ButtonProps) {
   return (
     <button
       className={`font-bold text-base py-1.5 ${className}`}
       onClick={onClick}
-			disabled={disabled}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -25,9 +30,16 @@ export function TextButton({
   text,
   textColor = "text-blue-600",
   onClick,
-	disabled
+  disabled,
 }: TextButtonProps) {
-  return <Button text={text} className={textColor} onClick={onClick} disabled={disabled} />;
+  return (
+    <Button
+      text={text}
+      className={textColor}
+      onClick={onClick}
+      disabled={disabled}
+    />
+  );
 }
 
 interface FilledButtonProps extends ButtonProps {
@@ -38,14 +50,17 @@ export function FilledButton({
   text,
   backgroundColor = "bg-blue",
   onClick,
-	disabled
+  className,
+  disabled,
 }: FilledButtonProps) {
   return (
     <Button
       text={text}
-      className={`text-white px-4 rounded-md ${backgroundColor}-500 hover:${backgroundColor}-600 active:${backgroundColor}-700 disabled:${backgroundColor}-200`}
+      className={`text-white px-4 rounded-md ${backgroundColor}-500 hover:${backgroundColor}-600 active:${backgroundColor}-700 disabled:${backgroundColor}-200 ${
+        className || ""
+      }`}
       onClick={onClick}
-			disabled={disabled}
+      disabled={disabled}
     />
   );
 }
