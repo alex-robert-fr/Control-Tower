@@ -1,25 +1,16 @@
-import ContainerEvaluationsArray from "../../../containers/ContainerEvaluationsArray";
-import useAddEvaluation from "../../../hooks/useAddEvaluation";
-import { Project } from "../../../schemas";
-import {FilledButton} from "../../atoms/buttons";
+import { FilledButton } from "@atoms/buttons";
+import { ContainerEvaluationsArray } from "@containers";
+import { useAddEvaluation, useProject } from "@hooks";
 
-interface EvaluationsSectionProps {
-  projectData?: Project;
-  isLoadingProject: boolean;
-}
-
-function EvaluationsSection({
-  projectData,
-  isLoadingProject,
-}: EvaluationsSectionProps) {
+export default function EvaluationsSection() {
+  const { data, isLoading } = useProject();
   const updateEvaluations = useAddEvaluation();
 
   const updateEvaluationsArray = () => {
     updateEvaluations();
   };
 
-  const isDisabledButton =
-    projectData && !isLoadingProject ? projectData.risk_model_id === -1 : false;
+  const isDisabledButton = data?.risk_model_id === -1 || isLoading;
 
   return (
     <div className="p-6">
@@ -31,12 +22,10 @@ function EvaluationsSection({
           text="Nouvelle évaluation"
           onClick={updateEvaluationsArray}
           disabled={isDisabledButton}
-					className="justify-self-end"
+          className="justify-self-end"
         />
       </div>
       <ContainerEvaluationsArray />
     </div>
   );
 }
-
-export default EvaluationsSection;

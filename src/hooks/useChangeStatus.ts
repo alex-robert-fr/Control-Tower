@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { StatusEnum } from "../enums";
-import apiService from "../services/apiService";
 import useProject from "./useProject";
+import { StatusEnum } from "@enums";
+import { updateData } from "@services";
 
 function useChangeStatus() {
   const { data, isLoading } = useProject();
@@ -15,7 +15,7 @@ function useChangeStatus() {
       let newData = {};
       if (!isLoading && data) {
         newData = { ...data, status: statusKey };
-        apiService.updateData(newData);
+        updateData(newData);
       }
     },
     onSuccess: () => {

@@ -1,7 +1,7 @@
 import { useChangeStatus, useProject } from "@hooks";
 import { StatusLine } from "@molecules";
 
-function ContainerStatusLine() {
+export default function ContainerStatusLine() {
   const updateStatus = useChangeStatus();
   const { data, isLoading } = useProject();
 
@@ -19,5 +19,3 @@ function ContainerStatusLine() {
     />
   );
 }
-
-export default ContainerStatusLine;

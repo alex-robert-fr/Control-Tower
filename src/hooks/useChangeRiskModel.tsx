@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useProject from "./useProject";
-import apiService from "../services/apiService";
+import { updateData } from "@services";
 
 function useChangeRiskModel() {
   const { data, isLoading } = useProject();
@@ -12,7 +12,7 @@ function useChangeRiskModel() {
       if (!isLoading && data) {
         newData = { ...data, risk_model_id: newModel };
       }
-      apiService.updateData(newData);
+      updateData(newData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["project"] });

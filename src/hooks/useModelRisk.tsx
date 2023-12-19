@@ -1,18 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { RiskModel, RiskModelSchema } from "../schemas";
+import { RiskModelSchema } from "@schema";
+import { useFetchData } from "./useFetchData";
 
-function useModelRisk() {
-  const fetchRiskModel = async () => {
-    const res = await fetch("http://localhost:3000/risk_model");
-    const data = await res.json();
-    return RiskModelSchema.array().parse(data);
-  };
-  const { data, isLoading, isError } = useQuery<RiskModel[], Error>({
-    queryKey: ["model"],
-    queryFn: fetchRiskModel,
-  });
-
-  return { data, isLoading, isError };
+export default function useModelRisk() {
+  return useFetchData("risk_model", RiskModelSchema, "model");
 }
-
-export default useModelRisk;

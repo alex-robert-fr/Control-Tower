@@ -1,9 +1,9 @@
 import { RectangularTag } from "@atoms/tags";
-import {Program} from "@schema";
-import {ColumnTitleAndTag} from "@molecules";
-import {useProgram, useProject} from "@hooks";
+import { Program } from "@schema";
+import { ColumnTitleAndTag } from "@molecules";
+import { useProgram, useProject } from "@hooks";
 
-function ContainerProgramColumn() {
+export default function ContainerProgramColumn() {
   const { data: projectData, isLoading: isProjectLoading } = useProject();
   const { data: programData, isLoading: isProgramLoading } = useProgram();
 
@@ -26,5 +26,3 @@ function ContainerProgramColumn() {
     />
   );
 }
-
-export default ContainerProgramColumn;

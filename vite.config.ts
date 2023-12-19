@@ -16,7 +16,11 @@ export default defineConfig({
       "@hooks": path.resolve(__dirname, "src/hooks"),
       "@atoms": path.resolve(__dirname, "src/components/atoms"),
       "@molecules": path.resolve(__dirname, "src/components/molecules"),
+      "@organisms": path.resolve(__dirname, "src/components/organisms"),
+      "@pages": path.resolve(__dirname, "src/components/pages"),
       "@containers": path.resolve(__dirname, "src/containers"),
+      "@utils": path.resolve(__dirname, "src/utils"),
+      "@services": path.resolve(__dirname, "src/services"),
     },
   },
 });

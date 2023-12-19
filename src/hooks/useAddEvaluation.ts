@@ -1,9 +1,9 @@
+import { Evaluation, Project } from "@schema";
 import useProject from "./useProject";
-import { EvaluationEnum } from "../enums";
-import { formatDate, getNowDateString } from "../utils/utilsDate";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Evaluation, Project } from "../schemas";
-import apiService from "../services/apiService";
+import { getNowDateString } from "@utils";
+import { EvaluationEnum } from "@enums";
+import { updateData } from "@services";
 
 function generateNewEvaluation(
   projectData: Project,
@@ -43,7 +43,7 @@ function useAddEvaluation() {
       let newData;
       if (data && !isLoading) {
         newData = generateNewEvaluation(data, data.evaluation);
-        apiService.updateData(newData);
+        updateData(newData);
       }
     },
     onSuccess: () => {

@@ -1,26 +1,24 @@
 import Skeleton from "react-loading-skeleton";
-import InformationsBlock from "../Blocks/InformationsBlock";
-import DescriptionBlock from "../Blocks/DescriptionBlock";
-import DomainAndProgramBlock from "../Blocks/DomainAndProgramBlock";
-import { Project } from "../../../schemas";
+import {
+  DescriptionBlock,
+  DomainAndProgramBlock,
+  InformationsBlock,
+} from "@organisms/Blocks";
+import { useProject } from "@hooks";
 
-interface InformationsSectionProps {
-  projectData?: Project;
-  isLoadingProject: boolean;
-}
+export default function InformationsSection() {
+  const { data, isLoading } = useProject();
+  const dataIsAvailable = data !== undefined && !isLoading;
 
-function InformationsSection({
-  projectData,
-  isLoadingProject,
-}: InformationsSectionProps) {
+  const titleRenderer = () => {
+    if (!dataIsAvailable) return <Skeleton />;
+    return `${data?.name} (${data?.reference})`;
+  };
+
   return (
     <div className="p-6">
       <h1 className="text-xl uppercase font-bold text-left mb-6 sm:text-2xl">
-        {projectData && !isLoadingProject ? (
-          `${projectData.name} (${projectData.reference})`
-        ) : (
-          <Skeleton />
-        )}
+        {titleRenderer()}
       </h1>
       <section className="grid lg:grid-cols-2 gap-4 max-sm:justify-items-stretch">
         <InformationsBlock className="lg:row-span-2" />
@@ -30,5 +28,3 @@ function InformationsSection({
     </div>
   );
 }
-
-export default InformationsSection;

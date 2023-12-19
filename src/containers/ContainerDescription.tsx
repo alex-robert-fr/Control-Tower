@@ -1,9 +1,9 @@
+import Paragraph from "@atoms/Paragraph";
+import { TextButton } from "@atoms/buttons";
+import { useProject } from "@hooks";
 import { useState } from "react";
-import useProject from "../hooks/useProject";
-import Paragraph from "../components/atoms/Paragraph";
-import {TextButton} from "../components/atoms/buttons";
 
-function ContainerDescription() {
+export default function ContainerDescription() {
   const { data, isLoading } = useProject();
   const [showMore, setShowMore] = useState(false);
   const [textInButton, setTextInButton] = useState("Voir Plus");
@@ -21,11 +21,9 @@ function ContainerDescription() {
         isLoadingProject={isLoading}
         characterLimit={100}
         showMore={showMore}
-				className="mb-3"
+        className="mb-3"
       />
       <TextButton text={textInButton} onClick={click} />
     </>
   );
 }
-
-export default ContainerDescription;

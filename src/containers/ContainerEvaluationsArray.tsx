@@ -1,15 +1,15 @@
-import EvaluationsArray from "../components/molecules/EvaluationsArray";
-import useProject from "../hooks/useProject";
+import { useProject } from "@hooks";
+import { EvaluationsArray } from "@molecules";
 
-function ContainerEvaluationsArray() {
+export default function ContainerEvaluationsArray() {
   const { data, isLoading } = useProject();
+
+  const dataIsAvailable = data !== undefined && !isLoading;
 
   return (
     <EvaluationsArray
       evaluationsData={data?.evaluation}
-      isLoadingProject={isLoading}
+      dataIsAvailable={dataIsAvailable}
     />
   );
 }
-
-export default ContainerEvaluationsArray;

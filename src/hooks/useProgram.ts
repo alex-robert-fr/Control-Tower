@@ -1,16 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { Program, ProgramSchema } from "../schemas";
+import { ProgramSchema } from "@schema";
+import { useFetchData } from "./useFetchData";
 
 export default function useProgram() {
-  const fetchPrograms = async () => {
-    const res = await fetch("http://localhost:3000/programs");
-    const data = await res.json();
-    return ProgramSchema.array().parse(data);
-  };
-  const { data, isLoading, isError } = useQuery<Program[]>({
-    queryKey: ["programs"],
-    queryFn: fetchPrograms,
-  });
-
-  return { data, isLoading, isError };
+  return useFetchData("programs", ProgramSchema, "programs");
 }

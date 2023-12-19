@@ -1,5 +1,4 @@
-async function updateData(newData: object) {
-  console.log(newData);
+export async function updateData(newData: object) {
   const res = await fetch(
     "http://localhost:3000/project_management/project/1",
     {
@@ -12,5 +11,3 @@ async function updateData(newData: object) {
   );
   return res.json();
 }
-
-export default { updateData };

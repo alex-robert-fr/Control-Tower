@@ -3,15 +3,15 @@ import EvaluationRow from "./EvaluationRow";
 import { Evaluation } from "@schema";
 
 interface EvaluationsArrayProps {
-  isLoadingProject: boolean;
+  dataIsAvailable: boolean;
   evaluationsData?: Array<Evaluation>;
 }
 
 export default function EvaluationsArray({
-  isLoadingProject,
+  dataIsAvailable,
   evaluationsData = [],
 }: EvaluationsArrayProps) {
-  if (isLoadingProject) return <Skeleton height={30} />;
+  if (!dataIsAvailable) return <Skeleton height={30} />;
 
   const generateRows = () => {
     if (evaluationsData.length < 1)

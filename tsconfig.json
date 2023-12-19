@@ -12,7 +12,11 @@
       "@hooks": ["src/hooks"],
       "@atoms/*": ["src/components/atoms/*"],
       "@molecules": ["src/components/molecules"],
+			"@organisms/*": ["src/components/organisms/*"],
+      "@pages/*": ["src/components/pages/*"],
       "@containers": ["src/containers"],
+			"@services": ["src/services"],
+			"@utils": ["src/utils"],
     },
 
     /* Bundler mode */
