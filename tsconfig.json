@@ -8,8 +8,11 @@
     "baseUrl": ".",
     "paths": {
       "@enums": ["src/enums"],
-      "@atoms": ["src/components/atoms"],
-      "@containers/*": ["src/containers/*"],
+      "@schema": ["src/schemas"],
+      "@hooks": ["src/hooks"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules": ["src/components/molecules"],
+      "@containers": ["src/containers"],
     },
 
     /* Bundler mode */

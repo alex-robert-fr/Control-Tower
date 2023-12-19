@@ -1,36 +1,29 @@
+import { DefaultTagsProps } from "@atoms/tags";
 import Skeleton from "react-loading-skeleton";
-import { TagsProps } from "../atoms/Tags";
 
 interface ColumnTitleAndTagProps {
   title: string;
+  dataIsAvailable: boolean;
+  TagComponent: React.ComponentType<DefaultTagsProps>;
   textTag?: string;
-  isLoading: boolean;
-  isError: boolean;
-  TagComponent: React.ComponentType<TagsProps>;
 }
 
-function ColumnTitleAndTag({
+export default function ColumnTitleAndTag({
   title,
-  textTag,
-  isLoading,
-  isError,
+  dataIsAvailable,
   TagComponent,
+  textTag = "",
 }: ColumnTitleAndTagProps) {
-  if (isError || isLoading || !textTag) {
-    return (
-      <div>
-        <p>{title}</p>
-        <Skeleton containerClassName="flex-1" />
-      </div>
-    );
-  }
+  const columnTitleAndTagRenderer = () => {
+    if (!dataIsAvailable)
+      return <Skeleton containerClassName="flex-1" width="75%" />;
+    return <TagComponent text={textTag} />;
+  };
 
   return (
     <div>
       <p className="font-bold text-gray-500 pb-2">{title}</p>
-      <TagComponent text={textTag} />
+      {columnTitleAndTagRenderer()}
     </div>
   );
 }
-
-export default ColumnTitleAndTag;

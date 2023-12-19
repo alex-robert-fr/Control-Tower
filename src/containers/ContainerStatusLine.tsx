@@ -1,25 +1,20 @@
-import StatusLine from "../components/molecules/StatusLine";
-import useChangeStatus from "../hooks/useChangeStatus";
+import { useChangeStatus, useProject } from "@hooks";
+import { StatusLine } from "@molecules";
 
-export interface ContainerStatusLineProps {
-  projectStatus?: string;
-  isLoadingProject: boolean;
-}
-
-function ContainerStatusLine({
-  projectStatus,
-  isLoadingProject,
-}: ContainerStatusLineProps) {
+function ContainerStatusLine() {
   const updateStatus = useChangeStatus();
+  const { data, isLoading } = useProject();
 
   const updateStatusInput = (event: React.ChangeEvent<HTMLSelectElement>) => {
     updateStatus(event.target.value);
   };
 
+  const dataIsAvailable = data !== undefined && !isLoading;
+
   return (
     <StatusLine
-      projectStatus={projectStatus}
-      isLoadingProject={isLoadingProject}
+      projectStatus={data?.status}
+      dataIsAvailable={dataIsAvailable}
       updateStatusInput={updateStatusInput}
     />
   );

@@ -1,31 +1,33 @@
-import {RoundedTag} from "@atoms";
-import ColumnTitleAndTag from "../components/molecules/ColumnTitleAndTag";
-import useDomain from "../hooks/useDomain";
-import useProject from "../hooks/useProject";
-import {Domain} from "../schemas";
+import { RoundedTag } from "@atoms/tags";
+import { useDomain, useProject } from "@hooks";
+import { ColumnTitleAndTag } from "@molecules";
+import { Domain } from "@schema";
 
-function ContainerDomainColumn() {
-  const { data: projectData, isLoading: isProjectLoading } = useProject();
+export default function ContainerDomainColumn() {
+  const { data: projectData, isLoading: isLoadingProject } = useProject();
   const {
     data: domainData,
-    isLoading: isDomainLoading,
-    isError: isDomainError,
+    isLoading: isLoadingDomain,
+    isError: isErrorDomain,
   } = useDomain();
+
   const domainObject = domainData?.find(
     (e: Domain) => e.id === projectData?.domain
   );
 
-  const isLoading = isProjectLoading || isDomainLoading;
+  const dataIsAvailable =
+    projectData !== undefined &&
+    domainData !== undefined &&
+    !isLoadingProject &&
+    !isLoadingDomain &&
+    !isErrorDomain;
 
   return (
     <ColumnTitleAndTag
       title="Domaine"
-      textTag={domainObject?.name}
-      isError={isDomainError}
-      isLoading={isLoading}
+      dataIsAvailable={dataIsAvailable}
       TagComponent={RoundedTag}
+      textTag={domainObject?.name}
     />
   );
 }
-
-export default ContainerDomainColumn;

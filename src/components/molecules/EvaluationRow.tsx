@@ -6,35 +6,28 @@ interface EvaluationRowProps {
   evaluationNumber: number;
 }
 
-function EvaluationRow({
+export default function EvaluationRow({
   creationDate,
   validationDate,
   name,
   rowIndex,
   evaluationNumber,
 }: EvaluationRowProps) {
-  const notLastRow = rowIndex < evaluationNumber - 1;
-  const creationDateFormat = new Date(creationDate).toLocaleString("fr-FR", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-  const validationDateFormat = new Date(validationDate).toLocaleString(
-    "fr-FR",
-    {
+  const formatDate = (date: string) => {
+    return new Date(date).toLocaleString("fr-FR", {
       day: "2-digit",
       month: "short",
       year: "numeric",
-    }
-  );
+    });
+  };
+
+  const notLastRow = rowIndex < evaluationNumber - 1;
 
   return (
     <tr className={notLastRow ? "border-b-2 border-gr-150" : ""}>
-      <td className="p-2">{creationDateFormat}</td>
-      <td>{validationDateFormat}</td>
+      <td className="p-2">{formatDate(creationDate)}</td>
+      <td>{formatDate(validationDate)}</td>
       <td>{name}</td>
     </tr>
   );
 }
-
-export default EvaluationRow;

@@ -1,57 +1,44 @@
 import Skeleton from "react-loading-skeleton";
 import LineForm from "./LineForm";
-import useModelRisk from "../../hooks/useModelRisk";
-import React from "react";
-import { RiskModel } from "../../schemas";
-import {ContainerModelLineProps} from "../../containers/ContainerModelLine";
+import { RiskModel } from "@schema";
 
-interface ModelLineProps extends ContainerModelLineProps {
+interface ModelLineProps {
   updateModelInput: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  dataIsAvailable: boolean;
+  idRiskModelProject?: number;
+  modelData?: Array<RiskModel>;
   isDisabled?: boolean;
 }
 
-function ModelLine({
-  idRiskModelProject,
-  isLoadingProject,
+export default function ModelLine({
   updateModelInput,
+  dataIsAvailable,
+  idRiskModelProject = undefined,
+  modelData = [],
   isDisabled = false,
 }: ModelLineProps) {
-  const { data, isLoading, isError } = useModelRisk();
+  const generationOptions = (modelData: Array<RiskModel>) => {
+    return modelData.map((model: RiskModel) => (
+      <option key={model.id} value={model.id}>
+        {model.model_name}
+      </option>
+    ));
+  };
 
-  const showSkeleton =
-    idRiskModelProject === undefined ||
-    !data ||
-    isLoadingProject ||
-    isLoading ||
-    isError;
-
-  if (showSkeleton) {
+  const modelLineRenderer = () => {
+    if (!dataIsAvailable) return <Skeleton containerClassName="flex-1" />;
     return (
-      <LineForm name="Modèle de risque">
-        <Skeleton containerClassName="flex-1" />
-      </LineForm>
-    );
-  }
-
-  return (
-    <LineForm name="Modèle de risque">
       <select
         name="model"
         defaultValue={idRiskModelProject}
         onChange={updateModelInput}
-				disabled={isDisabled}
+        disabled={isDisabled}
       >
         <option value={-1}>-- Choisissez un modèle de risque --</option>
-        {data.map((model: RiskModel) => {
-          return (
-            <option key={model.id} value={model.id}>
-              {model.model_name}
-            </option>
-          );
-        })}
+        {generationOptions(modelData)}
       </select>
-    </LineForm>
-  );
-}
+    );
+  };
 
-export default ModelLine;
+  return <LineForm name="Modèle de risque">{modelLineRenderer()}</LineForm>;
+}

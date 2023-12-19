@@ -1,5 +1,5 @@
+import { EvaluationEnum } from "@enums";
 import { z } from "zod";
-import { EvaluationEnum } from "../enums";
 
 export const EvaluationSchema = z.object({
   id: z.number(),

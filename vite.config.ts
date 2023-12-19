@@ -12,8 +12,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@enums": path.resolve(__dirname, "src/enums"),
+      "@schema": path.resolve(__dirname, "src/schemas"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
       "@atoms": path.resolve(__dirname, "src/components/atoms"),
-      "@containers/*": path.resolve(__dirname, "src/containers/*"),
+      "@molecules": path.resolve(__dirname, "src/components/molecules"),
+      "@containers": path.resolve(__dirname, "src/containers"),
     },
   },
 });

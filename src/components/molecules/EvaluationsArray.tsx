@@ -1,19 +1,17 @@
 import Skeleton from "react-loading-skeleton";
-import { Evaluation } from "../../schemas";
 import EvaluationRow from "./EvaluationRow";
+import { Evaluation } from "@schema";
 
 interface EvaluationsArrayProps {
-  evaluationsData?: Array<Evaluation>;
   isLoadingProject: boolean;
+  evaluationsData?: Array<Evaluation>;
 }
 
-function EvaluationsArray({
-  evaluationsData,
+export default function EvaluationsArray({
   isLoadingProject,
+  evaluationsData = [],
 }: EvaluationsArrayProps) {
-  if (!isLoadingProject) console.log(evaluationsData);
-
-  if (isLoadingProject || !evaluationsData) return <Skeleton height={30} />;
+  if (isLoadingProject) return <Skeleton height={30} />;
 
   const generateRows = () => {
     if (evaluationsData.length < 1)
@@ -31,8 +29,8 @@ function EvaluationsArray({
               creationDate={evaluation.creation_date}
               validationDate={evaluation.validation_date}
               name={evaluation.name}
-							rowIndex={index}
-							evaluationNumber={evaluationsData.length}
+              rowIndex={index}
+              evaluationNumber={evaluationsData.length}
             />
           );
         })}
@@ -58,5 +56,3 @@ function EvaluationsArray({
     </div>
   );
 }
-
-export default EvaluationsArray;

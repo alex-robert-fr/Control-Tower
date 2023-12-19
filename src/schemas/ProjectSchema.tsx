@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { StatusEnum } from "../enums";
 import { EvaluationSchema } from "./EvaluationSchema";
+import { StatusEnum } from "@enums";
 
 export const ProjectSchema = z.object({
   id: z.number(),

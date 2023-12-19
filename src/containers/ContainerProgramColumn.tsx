@@ -1,29 +1,28 @@
-import {RectangularTag} from "@atoms";
-import ColumnTitleAndTag from "../components/molecules/ColumnTitleAndTag";
-import useProgram from "../hooks/useProgram";
-import useProject from "../hooks/useProject";
-import {Program} from "../schemas";
+import { RectangularTag } from "@atoms/tags";
+import {Program} from "@schema";
+import {ColumnTitleAndTag} from "@molecules";
+import {useProgram, useProject} from "@hooks";
 
 function ContainerProgramColumn() {
   const { data: projectData, isLoading: isProjectLoading } = useProject();
-  const {
-    data: programData,
-    isLoading: isProgramLoading,
-    isError: isProgramError,
-  } = useProgram();
+  const { data: programData, isLoading: isProgramLoading } = useProgram();
 
-  const programObject = programData?.find(
+  const dataIsAvailable =
+    !isProjectLoading &&
+    !isProgramLoading &&
+    projectData !== undefined &&
+    programData !== undefined;
+
+  const getProgramObject = programData?.find(
     (e: Program) => e.id === projectData?.program
   );
-  const isLoading = isProjectLoading || isProgramLoading;
 
   return (
     <ColumnTitleAndTag
       title="Programme"
-      textTag={programObject?.name}
-      isLoading={isLoading}
-      isError={isProgramError}
+      dataIsAvailable={dataIsAvailable}
       TagComponent={RectangularTag}
+      textTag={getProgramObject?.name}
     />
   );
 }

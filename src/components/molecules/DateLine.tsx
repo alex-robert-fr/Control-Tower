@@ -1,20 +1,13 @@
 import Skeleton from "react-loading-skeleton";
-import useProject from "../../hooks/useProject";
 import LineForm from "./LineForm";
+import { useProject } from "@hooks";
 
-function DateLine() {
+export default function DateLine() {
   const { data, isLoading } = useProject();
 
-  if (isLoading || !data) {
+  const dateLineRenderer = () => {
+    if (isLoading || !data) return <Skeleton containerClassName="flex-1" />;
     return (
-      <LineForm name="Dates">
-        <Skeleton containerClassName="flex-1" />
-      </LineForm>
-    );
-  }
-
-  return (
-    <LineForm name="Dates">
       <div className="flex">
         <input
           type="date"
@@ -30,8 +23,8 @@ function DateLine() {
           disabled
         />
       </div>
-    </LineForm>
-  );
-}
+    );
+  };
 
-export default DateLine;
+  return <LineForm name="Dates">{dateLineRenderer()}</LineForm>;
+}

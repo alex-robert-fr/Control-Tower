@@ -21,7 +21,7 @@ export default function Paragraph({
   const renderText = () => {
     if (characterLimit && !showMore)
       return `${text.substring(0, characterLimit)}...`;
-    else return text;
+    return text;
   };
 
   return <p className={className}>{renderText()}</p>;

@@ -1,42 +1,42 @@
 import Skeleton from "react-loading-skeleton";
 import LineForm from "./LineForm";
-import {ContainerStatusLineProps} from "../../containers/ContainerStatusLine";
-import {StatusEnum} from "@enums";
+import { StatusEnum } from "@enums";
 
-interface StatusLineProps extends ContainerStatusLineProps {
+interface StatusLineProps {
+  dataIsAvailable: boolean;
   updateStatusInput: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  projectStatus?: string;
 }
 
 function StatusLine({
-  projectStatus,
-  isLoadingProject,
+  dataIsAvailable,
   updateStatusInput,
+  projectStatus = "",
 }: StatusLineProps) {
-  if (isLoadingProject || !projectStatus) {
-    return (
-      <LineForm name="Statut">
-        <Skeleton containerClassName="flex-1" />
-      </LineForm>
+  const generationOptions = () => {
+    return Object.values(StatusEnum).map(
+      (statusEnum: string, index: number) => (
+        <option key={index} value={statusEnum}>
+          {statusEnum}
+        </option>
+      )
     );
-  }
+  };
 
-  return (
-    <LineForm name="Statut">
+  const statusLineRenderer = () => {
+    if (!dataIsAvailable) return <Skeleton containerClassName="flex-1" />;
+    return (
       <select
         name="status"
         defaultValue={projectStatus}
         onChange={updateStatusInput}
       >
-        {Object.values(StatusEnum).map((status_enum: string, index: number) => {
-          return (
-            <option key={index} value={status_enum}>
-              {status_enum}
-            </option>
-          );
-        })}
+        {generationOptions()}
       </select>
-    </LineForm>
-  );
+    );
+  };
+
+  return <LineForm name="Statut">{statusLineRenderer()}</LineForm>;
 }
 
 export default StatusLine;
