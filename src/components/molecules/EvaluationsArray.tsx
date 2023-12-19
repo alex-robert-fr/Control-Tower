@@ -16,9 +16,11 @@ export default function EvaluationsArray({
   const generateRows = () => {
     if (evaluationsData.length < 1)
       return (
-        <tr>
-          <td colSpan={4}>Aucune évaluation créé pour le moment</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td colSpan={4}>Aucune évaluation créé pour le moment</td>
+          </tr>
+        </tbody>
       );
     return (
       <tbody>
