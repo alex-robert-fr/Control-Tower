@@ -8,7 +8,7 @@ interface StatusLineProps {
   projectStatus?: string;
 }
 
-function StatusLine({
+export default function StatusLine({
   dataIsAvailable,
   updateStatusInput,
   projectStatus = "",
@@ -39,4 +39,3 @@ function StatusLine({
   return <LineForm name="Statut">{statusLineRenderer()}</LineForm>;
 }
 
-export default StatusLine;
